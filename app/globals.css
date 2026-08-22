@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: theme("colors.paper");
+  color: theme("colors.ink");
+}
+
+@layer utilities {
+  .eyebrow {
+    @apply font-mono text-xs tracking-[0.2em] uppercase text-signal-dim;
+  }
+
+  .eyebrow-dark {
+    @apply font-mono text-xs tracking-[0.2em] uppercase text-signal;
+  }
+
+  .container-lab {
+    @apply mx-auto w-full max-w-6xl px-6 md:px-10;
+  }
+
+  .card-lab {
+    @apply rounded-none border border-line bg-white;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid theme("colors.signal");
+  outline-offset: 2px;
+}
