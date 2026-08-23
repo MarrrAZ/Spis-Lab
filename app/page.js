@@ -88,7 +88,7 @@ export default async function HomePage() {
         </section>
 
         {/* ABOUT — About Lab (kiri) + About Us / asisten (kanan) */}
-        <section className="bg-spis-bright text-white">
+        <section className="border-t-4 border-spis bg-spis-bright text-white">
           <div className="container-lab grid gap-12 py-20 md:grid-cols-2 md:py-24">
             <div>
               <p className="eyebrow-light mb-4">About Lab</p>
@@ -145,7 +145,7 @@ export default async function HomePage() {
         </section>
 
         {/* LAB ACTIVITIES — foto nyata, energi aktif */}
-        <section className="bg-spis-bright py-20 md:py-24">
+        <section className="border-t-4 border-spis bg-spis-bright py-20 md:py-24">
           <div className="container-lab">
             <p className="eyebrow-light mb-3">Lab Activities</p>
             <h2 className="max-w-xl font-display text-2xl font-bold text-white md:text-3xl">
@@ -163,7 +163,7 @@ export default async function HomePage() {
         </section>
 
         {/* RESEARCH INDEX — chips editorial, bukan floating card */}
-        <section className="bg-spis-bright py-20 md:py-24">
+        <section className="border-t-4 border-spis bg-spis-bright py-20 md:py-24">
           <div className="container-lab">
             <p className="eyebrow-light mb-3">Research Index</p>
             <h2 className="max-w-xl font-display text-2xl font-bold text-white md:text-3xl">
@@ -192,7 +192,7 @@ export default async function HomePage() {
         </section>
 
         {/* TIM — klik untuk detail */}
-        <section className="bg-spis-bright py-20 md:py-24">
+        <section className="border-t-4 border-spis bg-spis-bright py-20 md:py-24">
           <div className="container-lab">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
@@ -242,7 +242,7 @@ export default async function HomePage() {
         </section>
 
         {/* PENCAPAIAN */}
-        <section className="bg-spis-bright py-20 md:py-24">
+        <section className="border-t-4 border-spis bg-spis-bright py-20 md:py-24">
           <div className="container-lab">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
@@ -259,7 +259,7 @@ export default async function HomePage() {
             <div className="mt-10 grid gap-6 md:grid-cols-3">
               {achievements && achievements.length > 0 ? (
                 achievements.map((item) => (
-                  <div key={item.id} className="rounded-lg border-t-2 border-spis bg-white p-6">
+                  <div key={item.id} className="rounded-lg border-2 border-spis bg-white p-6">
                     <span className="font-mono text-[11px] uppercase tracking-wider text-spis-bright">
                       {item.type === "publikasi" ? "Publikasi" : "Pendanaan Riset"}
                       {item.year ? ` · ${item.year}` : ""}
@@ -281,7 +281,7 @@ export default async function HomePage() {
 
         {/* REKRUTMEN CTA — aksen merah minim */}
         {openRecruitment && openRecruitment.length > 0 && (
-          <section className="bg-spis-deep text-white">
+          <section className="border-t-4 border-spis bg-spis-deep text-white">
             <div className="container-lab flex flex-col items-start gap-6 py-16 md:flex-row md:items-center md:justify-between">
               <div>
                 <p className="font-mono text-xs uppercase tracking-widest text-white/70">
