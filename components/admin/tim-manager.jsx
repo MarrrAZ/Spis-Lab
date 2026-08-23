@@ -49,6 +49,22 @@ function MemberForm({ initial, onDone }) {
       <Field label="Email">
         <input name="email" type="email" defaultValue={initial?.email || ""} className={inputClass} />
       </Field>
+      <Field label="Angkatan (khusus asisten)">
+        <input
+          name="angkatan"
+          defaultValue={initial?.angkatan || ""}
+          placeholder="2022"
+          className={inputClass}
+        />
+      </Field>
+      <Field label="Jurusan (khusus asisten)">
+        <input
+          name="jurusan"
+          defaultValue={initial?.jurusan || ""}
+          placeholder="Teknik Telekomunikasi"
+          className={inputClass}
+        />
+      </Field>
       <Field label="Urutan Tampil (angka kecil = lebih dulu)">
         <input
           name="order_index"

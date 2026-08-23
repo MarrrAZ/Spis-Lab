@@ -1,10 +1,17 @@
-import { Space_Grotesk, Inter, IBM_Plex_Mono } from "next/font/google";
+import { Fraunces, Sora, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
-const display = Space_Grotesk({
+const display = Fraunces({
   subsets: ["latin"],
   variable: "--font-display",
-  weight: ["500", "600", "700"],
+  weight: ["600", "700"],
+  style: ["normal", "italic"],
+});
+
+const heading = Sora({
+  subsets: ["latin"],
+  variable: "--font-heading",
+  weight: ["600", "700"],
 });
 
 const body = Inter({
@@ -27,8 +34,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="id" className={`${display.variable} ${body.variable} ${mono.variable}`}>
-      <body className="font-body antialiased">{children}</body>
+    <html
+      lang="id"
+      className={`${display.variable} ${heading.variable} ${body.variable} ${mono.variable}`}
+    >
+      <body className="font-body antialiased bg-paper text-ink">{children}</body>
     </html>
   );
 }

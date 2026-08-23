@@ -1,19 +1,23 @@
 import Link from "next/link";
-import { WaveformBars } from "@/components/waveform";
+import Image from "next/image";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-line-dark bg-ink text-paper">
+    <footer className="bg-spis-deep text-white">
       <div className="container-lab py-14">
         <div className="grid gap-10 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
           <div>
-            <div className="mb-3 flex items-center gap-2">
-              <WaveformBars className="h-6 w-14" />
-            </div>
+            <Image
+              src="/logo/spis-mark-white.png"
+              alt="SPIS Lab"
+              width={40}
+              height={40}
+              className="mb-3 h-9 w-auto"
+            />
             <p className="font-display text-lg font-semibold">
               SPIS Laboratory
             </p>
-            <p className="mt-2 max-w-xs text-sm text-slate-light">
+            <p className="mt-2 max-w-xs text-sm text-white/60">
               Signal Processing for Intelligent System Laboratory —
               Kelompok Keahlian SPICE, Fakultas Teknik Elektro,
               Telkom University.
@@ -21,27 +25,27 @@ export function SiteFooter() {
           </div>
 
           <div>
-            <p className="eyebrow-dark mb-3">Jelajahi</p>
-            <ul className="space-y-2 text-sm text-slate-light">
-              <li><Link href="/tentang" className="hover:text-signal">Tentang Lab</Link></li>
-              <li><Link href="/pencapaian" className="hover:text-signal">Pencapaian</Link></li>
-              <li><Link href="/abdimas" className="hover:text-signal">Abdimas</Link></li>
-              <li><Link href="/rekrutmen" className="hover:text-signal">Rekrutmen</Link></li>
+            <p className="eyebrow-light mb-3">Jelajahi</p>
+            <ul className="space-y-2 text-sm text-white/60">
+              <li><Link href="/tentang" className="hover:text-white">Tentang Lab</Link></li>
+              <li><Link href="/pencapaian" className="hover:text-white">Pencapaian</Link></li>
+              <li><Link href="/abdimas" className="hover:text-white">Abdimas</Link></li>
+              <li><Link href="/rekrutmen" className="hover:text-white">Rekrutmen</Link></li>
             </ul>
           </div>
 
           <div>
-            <p className="eyebrow-dark mb-3">Organisasi</p>
-            <ul className="space-y-2 text-sm text-slate-light">
-              <li><Link href="/organigram" className="hover:text-signal">Organigram</Link></li>
-              <li><Link href="/tim" className="hover:text-signal">Dosen &amp; Asisten</Link></li>
-              <li><Link href="/admin/login" className="hover:text-signal">Login Asisten</Link></li>
+            <p className="eyebrow-light mb-3">Organisasi</p>
+            <ul className="space-y-2 text-sm text-white/60">
+              <li><Link href="/organigram" className="hover:text-white">Organigram</Link></li>
+              <li><Link href="/tim" className="hover:text-white">Dosen &amp; Asisten</Link></li>
+              <li><Link href="/admin/login" className="hover:text-white">Login Asisten</Link></li>
             </ul>
           </div>
 
           <div>
-            <p className="eyebrow-dark mb-3">Kontak</p>
-            <ul className="space-y-2 text-sm text-slate-light">
+            <p className="eyebrow-light mb-3">Kontak</p>
+            <ul className="space-y-2 text-sm text-white/60">
               <li>Gedung Bangkit, Telkom University</li>
               <li>Jl. Telekomunikasi, Terusan Buah Batu, Bandung 40257</li>
               <li>(022) 7566456</li>
@@ -49,7 +53,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-line-dark pt-6 font-mono text-[11px] uppercase tracking-wider text-slate-light md:flex-row md:items-center">
+        <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-white/10 pt-6 font-mono text-[11px] uppercase tracking-wider text-white/50 md:flex-row md:items-center">
           <span>© {new Date().getFullYear()} SPIS Lab · Telkom University</span>
           <span>Kelompok Keahlian Signal Processing, Information Security &amp; Computer Engineering</span>
         </div>
