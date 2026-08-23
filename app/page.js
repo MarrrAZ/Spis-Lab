@@ -118,7 +118,7 @@ export default async function HomePage() {
                     <Link
                       key={m.id}
                       href={`/tim/${m.id}`}
-                      className="flex items-center gap-4 rounded-lg bg-white/5 p-3 transition-colors hover:bg-white/10"
+                      className="flex items-center gap-4 rounded-lg border border-spis bg-white/5 p-3 transition-colors hover:bg-white/10"
                     >
                       <div className="h-12 w-12 shrink-0 overflow-hidden rounded-full bg-spis-mid">
                         {m.photo_url && (
@@ -153,7 +153,7 @@ export default async function HomePage() {
             </h2>
             <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
               {LAB_PHOTOS.map((src, i) => (
-                <div key={src} className="aspect-square overflow-hidden rounded-lg bg-spis-deep">
+                <div key={src} className="aspect-square overflow-hidden rounded-lg border border-spis bg-spis-deep">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={src} alt={`Kegiatan lab SPIS ${i + 1}`} className="h-full w-full object-cover" />
                 </div>
@@ -173,7 +173,7 @@ export default async function HomePage() {
               {RESEARCH_INDEX.map((r, i) => (
                 <div
                   key={r.code}
-                  className="rounded-lg px-5 py-4 text-white ring-1 ring-white/15"
+                  className="rounded-lg border border-spis px-5 py-4 text-white"
                   style={{
                     backgroundColor: ["#0F2C66", "#0B2050", "#173768", "#4C7EBF"][i],
                   }}
@@ -210,7 +210,7 @@ export default async function HomePage() {
               {teamPreview.length > 0 ? (
                 teamPreview.map((m) => (
                   <Link key={m.id} href={`/tim/${m.id}`} className="group">
-                    <div className="aspect-square w-full overflow-hidden rounded-lg bg-white/10">
+                    <div className="aspect-square w-full overflow-hidden rounded-lg border border-spis bg-white/10">
                       {m.photo_url ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img
@@ -259,7 +259,7 @@ export default async function HomePage() {
             <div className="mt-10 grid gap-6 md:grid-cols-3">
               {achievements && achievements.length > 0 ? (
                 achievements.map((item) => (
-                  <div key={item.id} className="rounded-lg bg-white p-6">
+                  <div key={item.id} className="rounded-lg border-t-2 border-spis bg-white p-6">
                     <span className="font-mono text-[11px] uppercase tracking-wider text-spis-bright">
                       {item.type === "publikasi" ? "Publikasi" : "Pendanaan Riset"}
                       {item.year ? ` · ${item.year}` : ""}
