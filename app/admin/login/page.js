@@ -2,8 +2,8 @@
 
 import { useFormState, useFormStatus } from "react-dom";
 import Link from "next/link";
+import Image from "next/image";
 import { login } from "@/lib/actions/auth";
-import { WaveformBars } from "@/components/waveform";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -11,7 +11,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="w-full bg-signal py-3 font-mono text-xs uppercase tracking-wider text-ink transition-colors hover:bg-white disabled:opacity-60"
+      className="w-full bg-spis-bright py-3 font-mono text-xs uppercase tracking-wider text-white transition-colors hover:bg-white hover:text-spis-bright disabled:opacity-60"
     >
       {pending ? "Memproses…" : "Masuk"}
     </button>
@@ -22,21 +22,27 @@ export default function LoginPage() {
   const [state, formAction] = useFormState(login, {});
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-ink px-6 text-paper">
+    <main className="flex min-h-screen items-center justify-center bg-spis px-6 text-white">
       <div className="w-full max-w-sm">
         <div className="mb-8 text-center">
-          <WaveformBars className="mx-auto h-10 w-24" />
+          <Image
+            src="/logo/spis-full-white.png"
+            alt="SPIS Lab"
+            width={200}
+            height={50}
+            className="mx-auto h-9 w-auto"
+          />
           <h1 className="mt-6 font-display text-xl font-semibold">
-            Login Asisten
+            Login Assistant
           </h1>
-          <p className="mt-1 font-mono text-xs uppercase tracking-wider text-slate-light">
-            SPIS Lab · Panel Pengelola
+          <p className="mt-1 font-mono text-xs uppercase tracking-wider text-white/50">
+            SPIS Lab · Admin Panel
           </p>
         </div>
 
-        <form action={formAction} className="space-y-4 border border-line-dark bg-ink-2 p-8">
+        <form action={formAction} className="space-y-4 border border-spis-bright bg-spis p-8">
           <div>
-            <label htmlFor="email" className="font-mono text-xs uppercase tracking-wider text-slate-light">
+            <label htmlFor="email" className="font-mono text-xs uppercase tracking-wider text-white/50">
               Email
             </label>
             <input
@@ -44,20 +50,20 @@ export default function LoginPage() {
               name="email"
               type="email"
               required
-              className="mt-2 w-full border border-line-dark bg-transparent px-3 py-2.5 text-sm text-paper outline-none focus:border-signal"
+              className="mt-2 w-full border border-white/20 bg-transparent px-3 py-2.5 text-sm text-white outline-none focus:border-spis-bright"
               placeholder="nama@student.telkomuniversity.ac.id"
             />
           </div>
           <div>
-            <label htmlFor="password" className="font-mono text-xs uppercase tracking-wider text-slate-light">
-              Kata Sandi
+            <label htmlFor="password" className="font-mono text-xs uppercase tracking-wider text-white/50">
+              Password
             </label>
             <input
               id="password"
               name="password"
               type="password"
               required
-              className="mt-2 w-full border border-line-dark bg-transparent px-3 py-2.5 text-sm text-paper outline-none focus:border-signal"
+              className="mt-2 w-full border border-white/20 bg-transparent px-3 py-2.5 text-sm text-white outline-none focus:border-spis-bright"
               placeholder="••••••••"
             />
           </div>
@@ -73,7 +79,7 @@ export default function LoginPage() {
 
         <Link
           href="/"
-          className="mt-6 block text-center font-mono text-xs uppercase tracking-wider text-slate-light hover:text-signal"
+          className="mt-6 block text-center font-mono text-xs uppercase tracking-wider text-white/50 hover:text-white"
         >
           ← Kembali ke website
         </Link>

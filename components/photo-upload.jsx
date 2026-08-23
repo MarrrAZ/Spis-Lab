@@ -55,7 +55,7 @@ export function PhotoUpload({ name = "photo_url", defaultValue = "" }) {
             type="file"
             accept="image/*"
             onChange={handleChange}
-            className="text-xs text-slate file:mr-3 file:border-0 file:bg-ink file:px-3 file:py-1.5 file:font-mono file:text-[11px] file:uppercase file:text-paper"
+            className="text-xs text-slate file:mr-3 file:border-0 file:bg-spis-bright file:px-3 file:py-1.5 file:font-mono file:text-[11px] file:uppercase file:text-white"
           />
           {uploading && <p className="mt-1 text-xs text-slate-light">Mengunggah…</p>}
           {error && <p className="mt-1 text-xs text-maroon">{error}</p>}

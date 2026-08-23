@@ -11,13 +11,13 @@ export default async function AdminTimPage() {
     .order("order_index", { ascending: true });
 
   return (
-    <div>
-      <p className="eyebrow mb-2">Kelola</p>
-      <h1 className="font-display text-2xl font-semibold text-ink">
+    <div className="-m-6 rounded-lg bg-spis-deep p-6 text-white md:-m-10 md:p-10">
+      <p className="eyebrow-light mb-2">Manage</p>
+      <h1 className="font-display text-2xl font-semibold text-white">
         Dosen &amp; Asisten
       </h1>
-      <p className="mt-2 max-w-xl text-sm text-slate">
-        Data ini tampil di halaman publik <strong>Tim</strong> dan dipakai
+      <p className="mt-2 max-w-xl text-sm text-white/70">
+        Data ini tampil di halaman publik <strong>Team</strong> dan dipakai
         sebagai sumber foto pada halaman <strong>Organigram</strong>.
       </p>
 

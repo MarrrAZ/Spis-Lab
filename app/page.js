@@ -56,7 +56,7 @@ export default async function HomePage() {
               <div className="mt-10 flex flex-wrap items-center gap-4">
                 <Link
                   href="/tentang"
-                  className="bg-white px-6 py-3 font-mono text-xs uppercase tracking-wider text-spis-bright transition-colors hover:bg-spis-soft"
+                  className="bg-spis px-6 py-3 font-mono text-xs uppercase tracking-wider text-white transition-colors hover:bg-spis-deep"
                 >
                   About Lab
                 </Link>
@@ -73,16 +73,13 @@ export default async function HomePage() {
             <div className="duotone-photo aspect-[4/3] w-full rounded-lg md:aspect-square">
               <div className="flex h-full w-full items-center justify-center">
                 <Image
-                  src="/logo/spis-mark-white.png"
-                  alt=""
-                  width={180}
-                  height={180}
-                  className="h-24 w-24 opacity-30 md:h-32 md:w-32"
+                  src="/logo/signal-wave-white.png"
+                  alt="Visualisasi sinyal"
+                  width={420}
+                  height={236}
+                  className="h-auto w-[85%] max-w-sm opacity-90"
                 />
               </div>
-              <span className="absolute bottom-3 left-3 font-mono text-[10px] uppercase tracking-widest text-white/50">
-                Foto lab · ganti dengan foto asli
-              </span>
             </div>
           </div>
         </section>
@@ -93,12 +90,12 @@ export default async function HomePage() {
             <div>
               <p className="eyebrow-light mb-4">About Lab</p>
               <h2 className="font-display text-2xl font-bold md:text-3xl">
-                Laboratorium riset & praktikum di bawah Kelompok Keahlian SPICE
+                Laboratorium riset di bawah Kelompok Keahlian SPICE
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-white/70 md:text-base">
                 SPIS Laboratory mengembangkan teori dan algoritma pengolahan
                 sinyal untuk berbagai bidang aplikasi — radar, biosignal, dan
-                speech processing — memadukan riset dasar dengan praktikum dan
+                speech processing — memadukan riset dasar dengan
                 kolaborasi mahasiswa di Fakultas Teknik Elektro, Telkom
                 University.
               </p>
@@ -149,7 +146,7 @@ export default async function HomePage() {
           <div className="container-lab">
             <p className="eyebrow-light mb-3">Lab Activities</p>
             <h2 className="max-w-xl font-display text-2xl font-bold text-white md:text-3xl">
-              Riset, kegiatan lab, dan kolaborasi tiap minggu
+              Riset, Kegiatan Lab, Fasilitas Lab, dan Kolaborasi
             </h2>
             <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
               {LAB_PHOTOS.map((src, i) => (
@@ -169,7 +166,7 @@ export default async function HomePage() {
             <h2 className="max-w-xl font-display text-2xl font-bold text-white md:text-3xl">
               Empat arah riset utama laboratorium
             </h2>
-            <div className="mt-10 flex flex-wrap gap-3">
+            <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-4">
               {RESEARCH_INDEX.map((r, i) => (
                 <div
                   key={r.code}
@@ -196,13 +193,13 @@ export default async function HomePage() {
           <div className="container-lab">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
-                <p className="eyebrow-light mb-3">Orang di Balik Lab</p>
+                <p className="eyebrow-light mb-3">Our People</p>
                 <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
                   Dosen &amp; Asisten
                 </h2>
               </div>
               <Link href="/tim" className="font-mono text-xs uppercase tracking-wider text-white underline underline-offset-4">
-                Lihat semua →
+                View All →
               </Link>
             </div>
 
@@ -246,13 +243,13 @@ export default async function HomePage() {
           <div className="container-lab">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
-                <p className="eyebrow-light mb-3">Pencapaian Terbaru</p>
+                <p className="eyebrow-light mb-3">Recent Achievement</p>
                 <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
                   Publikasi &amp; pendanaan riset
                 </h2>
               </div>
               <Link href="/pencapaian" className="font-mono text-xs uppercase tracking-wider text-white underline underline-offset-4">
-                Lihat semua →
+                View All →
               </Link>
             </div>
 
@@ -285,7 +282,7 @@ export default async function HomePage() {
             <div className="container-lab flex flex-col items-start gap-6 py-16 md:flex-row md:items-center md:justify-between">
               <div>
                 <p className="font-mono text-xs uppercase tracking-widest text-white/70">
-                  Pendaftaran Dibuka
+                  Registration Open
                 </p>
                 <h2 className="mt-2 font-display text-2xl font-bold md:text-3xl">
                   {openRecruitment[0].title}
@@ -295,7 +292,7 @@ export default async function HomePage() {
                 href="/rekrutmen"
                 className="whitespace-nowrap border border-white px-6 py-3 font-mono text-xs uppercase tracking-wider transition-colors hover:bg-white hover:text-spis-deep"
               >
-                Lihat Detail →
+                View Details →
               </Link>
             </div>
           </section>

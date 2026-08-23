@@ -6,13 +6,13 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const NAV = [
-  { href: "/", label: "Beranda" },
-  { href: "/tentang", label: "Tentang" },
-  { href: "/pencapaian", label: "Pencapaian" },
+  { href: "/", label: "Home" },
+  { href: "/tentang", label: "About" },
+  { href: "/pencapaian", label: "Achievement" },
   { href: "/abdimas", label: "Abdimas" },
-  { href: "/rekrutmen", label: "Rekrutmen" },
+  { href: "/rekrutmen", label: "Recruitment" },
   { href: "/organigram", label: "Organigram" },
-  { href: "/tim", label: "Tim" },
+  { href: "/tim", label: "Team" },
 ];
 
 export function SiteHeader() {
@@ -51,7 +51,7 @@ export function SiteHeader() {
             href="/admin/login"
             className="border border-white/40 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider text-white transition-colors hover:bg-white hover:text-spis"
           >
-            Login Asisten
+            Login Assistant
           </Link>
         </nav>
 
@@ -85,7 +85,7 @@ export function SiteHeader() {
               onClick={() => setOpen(false)}
               className="py-3 font-mono text-xs uppercase tracking-wider text-white"
             >
-              Login Asisten →
+              Login Assistant →
             </Link>
           </div>
         </nav>

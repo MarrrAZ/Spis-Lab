@@ -28,14 +28,14 @@ export function AkunManager({ initialAccounts, currentUserId }) {
   return (
     <div className="space-y-6">
       {showForm ? (
-        <form onSubmit={handleSubmit} className="grid gap-4 border border-line bg-white p-6 md:grid-cols-2">
+        <form onSubmit={handleSubmit} className="grid gap-4 rounded-lg border border-spis bg-white p-6 md:grid-cols-2">
           <Field label="Nama Lengkap">
             <input name="full_name" required className={inputClass} />
           </Field>
           <Field label="Email">
             <input name="email" type="email" required className={inputClass} />
           </Field>
-          <Field label="Kata Sandi Awal">
+          <Field label="Password Awal">
             <input name="password" type="password" minLength={6} required className={inputClass} />
           </Field>
           {error && <p className="md:col-span-2 text-sm text-maroon">{error}</p>}
@@ -43,16 +43,16 @@ export function AkunManager({ initialAccounts, currentUserId }) {
             <button
               type="submit"
               disabled={isPending}
-              className="bg-maroon px-6 py-2.5 font-mono text-xs uppercase tracking-wider text-white hover:bg-maroon-dark disabled:opacity-60"
+              className="bg-maroon px-6 py-2.5 font-mono text-xs uppercase tracking-wider text-white hover:opacity-90 disabled:opacity-60"
             >
-              {isPending ? "Membuat…" : "Buat Akun"}
+              {isPending ? "Creating…" : "Create Account"}
             </button>
             <button
               type="button"
               onClick={() => setShowForm(false)}
               className="px-6 py-2.5 font-mono text-xs uppercase tracking-wider text-slate hover:text-ink"
             >
-              Batal
+              Cancel
             </button>
           </div>
         </form>
@@ -61,7 +61,7 @@ export function AkunManager({ initialAccounts, currentUserId }) {
           onClick={() => setShowForm(true)}
           className="border border-maroon px-5 py-2.5 font-mono text-xs uppercase tracking-wider text-maroon hover:bg-maroon hover:text-white"
         >
-          + Tambah Akun Asisten
+          + New Account
         </button>
       )}
 
@@ -78,7 +78,7 @@ function AccountRow({ account, isSelf }) {
   const [isPending, startTransition] = useTransition();
 
   return (
-    <div className="flex items-center gap-4 border border-line bg-white p-4">
+    <div className="flex items-center gap-4 rounded-lg border border-spis bg-white p-4">
       <div className="flex-1">
         <p className="font-display text-sm font-semibold text-ink">
           {account.full_name} {isSelf && <span className="text-slate-light">(Anda)</span>}
@@ -93,9 +93,9 @@ function AccountRow({ account, isSelf }) {
             startTransition(() => deleteAccount(account.id));
           }
         }}
-        className="font-mono text-xs uppercase tracking-wider text-maroon hover:text-maroon-dark disabled:opacity-30"
+        className="font-mono text-xs uppercase tracking-wider text-maroon hover:opacity-80 disabled:opacity-30"
       >
-        Hapus
+        Delete
       </button>
     </div>
   );

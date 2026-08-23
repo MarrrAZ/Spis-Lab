@@ -28,7 +28,7 @@ function MemberForm({ initial, onDone }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-4 border border-line bg-white p-6 md:grid-cols-2">
+    <form onSubmit={handleSubmit} className="grid gap-4 rounded-lg border border-spis bg-white p-6 md:grid-cols-2">
       <Field label="Kategori">
         <select name="category" defaultValue={initial?.category || "asisten"} className={inputClass} required>
           <option value="dosen">Dosen</option>
@@ -90,9 +90,9 @@ function MemberForm({ initial, onDone }) {
         <button
           type="submit"
           disabled={isPending}
-          className="bg-maroon px-6 py-2.5 font-mono text-xs uppercase tracking-wider text-white hover:bg-maroon-dark disabled:opacity-60"
+          className="bg-maroon px-6 py-2.5 font-mono text-xs uppercase tracking-wider text-white hover:opacity-90 disabled:opacity-60"
         >
-          {isPending ? "Menyimpan…" : initial ? "Simpan Perubahan" : "Tambah Anggota"}
+          {isPending ? "Saving…" : initial ? "Save Changes" : "New Member"}
         </button>
         {initial && (
           <button
@@ -100,7 +100,7 @@ function MemberForm({ initial, onDone }) {
             onClick={onDone}
             className="px-6 py-2.5 font-mono text-xs uppercase tracking-wider text-slate hover:text-ink"
           >
-            Batal
+            Cancel
           </button>
         )}
       </div>
@@ -117,7 +117,7 @@ function MemberRow({ member }) {
   }
 
   return (
-    <div className="flex items-center gap-4 border border-line bg-white p-4">
+    <div className="flex items-center gap-4 rounded-lg border border-spis bg-white p-4">
       {member.photo_url ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img src={member.photo_url} alt={member.name} className="h-12 w-12 object-cover" />
@@ -134,7 +134,7 @@ function MemberRow({ member }) {
         onClick={() => setEditing(true)}
         className="font-mono text-xs uppercase tracking-wider text-slate hover:text-ink"
       >
-        Ubah
+        Edit
       </button>
       <button
         disabled={isPending}
@@ -143,9 +143,9 @@ function MemberRow({ member }) {
             startTransition(() => deleteMember(member.id));
           }
         }}
-        className="font-mono text-xs uppercase tracking-wider text-maroon hover:text-maroon-dark disabled:opacity-60"
+        className="font-mono text-xs uppercase tracking-wider text-maroon hover:opacity-80 disabled:opacity-60"
       >
-        Hapus
+        Delete
       </button>
     </div>
   );
@@ -163,13 +163,13 @@ export function TimManager({ initialMembers }) {
           onClick={() => setShowForm(true)}
           className="border border-maroon px-5 py-2.5 font-mono text-xs uppercase tracking-wider text-maroon hover:bg-maroon hover:text-white"
         >
-          + Tambah Dosen / Asisten
+          + New Member
         </button>
       )}
 
       <div className="space-y-3 pt-2">
         {initialMembers.length === 0 && (
-          <p className="text-sm text-slate-light">Belum ada anggota.</p>
+          <p className="text-sm text-white/70">Belum ada anggota.</p>
         )}
         {initialMembers.map((m) => (
           <MemberRow key={m.id} member={m} />

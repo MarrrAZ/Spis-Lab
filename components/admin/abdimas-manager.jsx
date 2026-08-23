@@ -25,7 +25,7 @@ function AbdimasForm({ initial, onDone }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-4 border border-line bg-white p-6 md:grid-cols-2">
+    <form onSubmit={handleSubmit} className="grid gap-4 rounded-lg border border-spis bg-white p-6 md:grid-cols-2">
       <div className="md:col-span-2">
         <Field label="Judul Kegiatan">
           <input name="title" defaultValue={initial?.title} required className={inputClass} />
@@ -54,13 +54,13 @@ function AbdimasForm({ initial, onDone }) {
         <button
           type="submit"
           disabled={isPending}
-          className="bg-maroon px-6 py-2.5 font-mono text-xs uppercase tracking-wider text-white hover:bg-maroon-dark disabled:opacity-60"
+          className="bg-maroon px-6 py-2.5 font-mono text-xs uppercase tracking-wider text-white hover:opacity-90 disabled:opacity-60"
         >
-          {isPending ? "Menyimpan…" : initial ? "Simpan Perubahan" : "Tambah Kegiatan"}
+          {isPending ? "Saving…" : initial ? "Save Changes" : "New Activity"}
         </button>
         {initial && (
           <button type="button" onClick={onDone} className="px-6 py-2.5 font-mono text-xs uppercase tracking-wider text-slate hover:text-ink">
-            Batal
+            Cancel
           </button>
         )}
       </div>
@@ -75,7 +75,7 @@ function AbdimasRow({ item }) {
   if (editing) return <AbdimasForm initial={item} onDone={() => setEditing(false)} />;
 
   return (
-    <div className="flex items-center gap-4 border border-line bg-white p-4">
+    <div className="flex items-center gap-4 rounded-lg border border-spis bg-white p-4">
       <div className="flex-1">
         <p className="font-display text-sm font-semibold text-ink">{item.title}</p>
         <p className="font-mono text-[11px] uppercase tracking-wider text-slate-light">
@@ -83,16 +83,16 @@ function AbdimasRow({ item }) {
         </p>
       </div>
       <button onClick={() => setEditing(true)} className="font-mono text-xs uppercase tracking-wider text-slate hover:text-ink">
-        Ubah
+        Edit
       </button>
       <button
         disabled={isPending}
         onClick={() => {
           if (confirm(`Hapus "${item.title}"?`)) startTransition(() => deleteAbdimas(item.id));
         }}
-        className="font-mono text-xs uppercase tracking-wider text-maroon hover:text-maroon-dark disabled:opacity-60"
+        className="font-mono text-xs uppercase tracking-wider text-maroon hover:opacity-80 disabled:opacity-60"
       >
-        Hapus
+        Delete
       </button>
     </div>
   );
@@ -106,11 +106,11 @@ export function AbdimasManager({ initialItems }) {
         <AbdimasForm onDone={() => setShowForm(false)} />
       ) : (
         <button onClick={() => setShowForm(true)} className="border border-maroon px-5 py-2.5 font-mono text-xs uppercase tracking-wider text-maroon hover:bg-maroon hover:text-white">
-          + Tambah Kegiatan Abdimas
+          + New Activity
         </button>
       )}
       <div className="space-y-3 pt-2">
-        {initialItems.length === 0 && <p className="text-sm text-slate-light">Belum ada data.</p>}
+        {initialItems.length === 0 && <p className="text-sm text-white/70">Belum ada data.</p>}
         {initialItems.map((item) => (
           <AbdimasRow key={item.id} item={item} />
         ))}

@@ -31,7 +31,7 @@ function AchievementForm({ initial, onDone }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-4 border border-line bg-white p-6 md:grid-cols-2">
+    <form onSubmit={handleSubmit} className="grid gap-4 rounded-lg border border-spis bg-white p-6 md:grid-cols-2">
       <Field label="Jenis">
         <select name="type" defaultValue={initial?.type || "publikasi"} className={inputClass} required>
           <option value="publikasi">Publikasi</option>
@@ -69,9 +69,9 @@ function AchievementForm({ initial, onDone }) {
         <button
           type="submit"
           disabled={isPending}
-          className="bg-maroon px-6 py-2.5 font-mono text-xs uppercase tracking-wider text-white hover:bg-maroon-dark disabled:opacity-60"
+          className="bg-maroon px-6 py-2.5 font-mono text-xs uppercase tracking-wider text-white hover:opacity-90 disabled:opacity-60"
         >
-          {isPending ? "Menyimpan…" : initial ? "Simpan Perubahan" : "Tambah Pencapaian"}
+          {isPending ? "Saving…" : initial ? "Save Changes" : "New Achievement"}
         </button>
         {initial && (
           <button
@@ -79,7 +79,7 @@ function AchievementForm({ initial, onDone }) {
             onClick={onDone}
             className="px-6 py-2.5 font-mono text-xs uppercase tracking-wider text-slate hover:text-ink"
           >
-            Batal
+            Cancel
           </button>
         )}
       </div>
@@ -96,7 +96,7 @@ function AchievementRow({ item }) {
   }
 
   return (
-    <div className="flex items-center gap-4 border border-line bg-white p-4">
+    <div className="flex items-center gap-4 rounded-lg border border-spis bg-white p-4">
       <span className="w-16 shrink-0 font-mono text-xs text-slate-light">{item.year ?? "—"}</span>
       <div className="flex-1">
         <p className="font-display text-sm font-semibold text-ink">{item.title}</p>
@@ -105,7 +105,7 @@ function AchievementRow({ item }) {
         </p>
       </div>
       <button onClick={() => setEditing(true)} className="font-mono text-xs uppercase tracking-wider text-slate hover:text-ink">
-        Ubah
+        Edit
       </button>
       <button
         disabled={isPending}
@@ -114,9 +114,9 @@ function AchievementRow({ item }) {
             startTransition(() => deleteAchievement(item.id));
           }
         }}
-        className="font-mono text-xs uppercase tracking-wider text-maroon hover:text-maroon-dark disabled:opacity-60"
+        className="font-mono text-xs uppercase tracking-wider text-maroon hover:opacity-80 disabled:opacity-60"
       >
-        Hapus
+        Delete
       </button>
     </div>
   );
@@ -134,13 +134,13 @@ export function PencapaianManager({ initialItems }) {
           onClick={() => setShowForm(true)}
           className="border border-maroon px-5 py-2.5 font-mono text-xs uppercase tracking-wider text-maroon hover:bg-maroon hover:text-white"
         >
-          + Tambah Pencapaian
+          + New Achievement
         </button>
       )}
 
       <div className="space-y-3 pt-2">
         {initialItems.length === 0 && (
-          <p className="text-sm text-slate-light">Belum ada data.</p>
+          <p className="text-sm text-white/70">Belum ada data.</p>
         )}
         {initialItems.map((item) => (
           <AchievementRow key={item.id} item={item} />

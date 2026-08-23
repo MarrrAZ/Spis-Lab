@@ -16,19 +16,19 @@ export default async function DashboardPage() {
 
   const cards = [
     { label: "Dosen & Asisten", count: members.count ?? 0, href: "/admin/tim" },
-    { label: "Pencapaian", count: achievements.count ?? 0, href: "/admin/pencapaian" },
-    { label: "Kegiatan Abdimas", count: abdimas.count ?? 0, href: "/admin/abdimas" },
-    { label: "Info Rekrutmen", count: recruitment.count ?? 0, href: "/admin/rekrutmen" },
-    { label: "Akun Asisten", count: accounts.count ?? 0, href: "/admin/akun" },
+    { label: "Achievement", count: achievements.count ?? 0, href: "/admin/pencapaian" },
+    { label: "Abdimas Activity", count: abdimas.count ?? 0, href: "/admin/abdimas" },
+    { label: "Recruitment Info", count: recruitment.count ?? 0, href: "/admin/rekrutmen" },
+    { label: "Assistant Account", count: accounts.count ?? 0, href: "/admin/akun" },
   ];
 
   return (
-    <div>
-      <p className="eyebrow mb-2">Dashboard</p>
-      <h1 className="font-display text-2xl font-semibold text-ink">
-        Selamat datang di panel pengelola SPIS Lab
+    <div className="-m-6 rounded-lg bg-spis-deep p-6 text-white md:-m-10 md:p-10">
+      <p className="eyebrow-light mb-2">Dashboard</p>
+      <h1 className="font-display text-2xl font-semibold text-white">
+        Selamat datang di admin panel SPIS Lab
       </h1>
-      <p className="mt-2 max-w-xl text-sm text-slate">
+      <p className="mt-2 max-w-xl text-sm text-white/70">
         Semua perubahan yang Anda simpan di sini akan langsung tampil di
         website publik.
       </p>
@@ -38,7 +38,7 @@ export default async function DashboardPage() {
           <Link
             key={c.href}
             href={c.href}
-            className="border border-line bg-white p-6 transition-colors hover:border-maroon"
+            className="rounded-lg border border-spis-bright bg-white p-6 transition-colors hover:border-white"
           >
             <p className="font-mono text-3xl font-semibold text-ink">{c.count}</p>
             <p className="mt-2 font-mono text-xs uppercase tracking-wider text-slate-light">

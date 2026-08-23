@@ -13,11 +13,11 @@ export default async function AdminAkunPage() {
   const accounts = await listAccounts();
 
   return (
-    <div>
-      <p className="eyebrow mb-2">Kelola</p>
-      <h1 className="font-display text-2xl font-semibold text-ink">Akun Asisten</h1>
-      <p className="mt-2 max-w-xl text-sm text-slate">
-        Tambah atau hapus akun yang boleh login ke panel pengelola ini.
+    <div className="-m-6 rounded-lg bg-spis-deep p-6 text-white md:-m-10 md:p-10">
+      <p className="eyebrow-light mb-2">Manage</p>
+      <h1 className="font-display text-2xl font-semibold text-white">Assistant Account</h1>
+      <p className="mt-2 max-w-xl text-sm text-white/70">
+        Tambah atau hapus akun yang boleh login ke admin panel ini.
         Setiap akun baru akan langsung bisa dipakai untuk login.
       </p>
       <div className="mt-8">

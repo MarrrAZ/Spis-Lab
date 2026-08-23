@@ -11,10 +11,10 @@ export default async function AdminAbdimasPage() {
     .order("activity_date", { ascending: false });
 
   return (
-    <div>
-      <p className="eyebrow mb-2">Kelola</p>
-      <h1 className="font-display text-2xl font-semibold text-ink">Pengabdian Masyarakat</h1>
-      <p className="mt-2 max-w-xl text-sm text-slate">
+    <div className="-m-6 rounded-lg bg-spis-deep p-6 text-white md:-m-10 md:p-10">
+      <p className="eyebrow-light mb-2">Manage</p>
+      <h1 className="font-display text-2xl font-semibold text-white">Abdimas</h1>
+      <p className="mt-2 max-w-xl text-sm text-white/70">
         Kegiatan yang ditambahkan di sini akan tampil di halaman publik{" "}
         <strong>Abdimas</strong>.
       </p>
