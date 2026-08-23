@@ -7,46 +7,44 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        ink: "#0B1220",
-        "ink-2": "#101B2D",
-        paper: "#F5F6F8",
-        "paper-2": "#ECEEF2",
-        maroon: "#8C1524",
-        "maroon-dark": "#6E1019",
-        signal: "#29E6C6",
-        "signal-dim": "#1AA893",
+        // SPIS official blue, sampled from the real logo asset
+        spis: {
+          DEFAULT: "#0F2C66",
+          deep: "#0B2050",
+          bright: "#2557C7",
+          mid: "#173768",
+          soft: "#E8EEF9",
+        },
+        ink: "#12151C",
+        paper: "#FFFFFF",
+        "paper-2": "#F7F8FA",
+        "paper-3": "#EDEFF3",
+        maroon: "#C23B3B",
         slate: "#48505E",
-        "slate-light": "#7A8394",
-        line: "#E2E5EA",
-        "line-dark": "#22314A",
+        "slate-light": "#7A8496",
+        line: "#E4E7EC",
       },
       fontFamily: {
-        display: ["var(--font-display)", "sans-serif"],
+        display: ["var(--font-display)", "serif"],
+        heading: ["var(--font-heading)", "sans-serif"],
         body: ["var(--font-body)", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
       },
-      backgroundImage: {
-        "grid-dark":
-          "linear-gradient(to right, rgba(41,230,198,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(41,230,198,0.07) 1px, transparent 1px)",
-      },
-      backgroundSize: {
-        grid: "36px 36px",
-      },
       keyframes: {
+        "fade-up": {
+          "0%": { opacity: "0", transform: "translateY(10px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
         wave: {
           "0%, 100%": { transform: "scaleY(0.4)" },
           "50%": { transform: "scaleY(1)" },
         },
-        drift: {
-          "0%": { backgroundPosition: "0 0" },
-          "100%": { backgroundPosition: "72px 0" },
-        },
       },
       animation: {
+        "fade-up": "fade-up 0.5s ease-out both",
         wave1: "wave 1.6s ease-in-out infinite",
         wave2: "wave 1.9s ease-in-out infinite",
         wave3: "wave 1.3s ease-in-out infinite",
-        drift: "drift 6s linear infinite",
       },
     },
   },
