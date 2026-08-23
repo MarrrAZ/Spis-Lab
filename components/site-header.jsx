@@ -20,23 +20,17 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 bg-spis-bright">
+    <header className="sticky top-0 z-40 bg-spis">
       <div className="container-lab flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5">
           <Image
-            src="/logo/spis-mark-white.png"
-            alt="SPIS Lab"
-            width={34}
-            height={34}
-            className="h-8 w-auto"
+            src="/logo/spis-full-white.png"
+            alt="SPIS Lab — Signal Processing for Intelligent System Laboratory"
+            width={220}
+            height={55}
+            className="h-9 w-auto"
             priority
           />
-          <span className="font-heading text-sm font-bold leading-tight text-white">
-            SPIS LAB
-            <span className="block font-mono text-[9px] font-normal tracking-widest text-white/70">
-              TELKOM UNIVERSITY
-            </span>
-          </span>
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">
@@ -55,7 +49,7 @@ export function SiteHeader() {
           ))}
           <Link
             href="/admin/login"
-            className="border border-white/40 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider text-white transition-colors hover:bg-white hover:text-spis-bright"
+            className="border border-white/40 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider text-white transition-colors hover:bg-white hover:text-spis"
           >
             Login Asisten
           </Link>

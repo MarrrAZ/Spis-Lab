@@ -3,21 +3,18 @@ import Image from "next/image";
 
 export function SiteFooter() {
   return (
-    <footer className="bg-spis-deep text-white">
+    <footer className="bg-spis text-white">
       <div className="container-lab py-14">
-        <div className="grid gap-10 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
+        <div className="grid gap-10 md:grid-cols-[1.1fr_0.8fr_0.8fr_0.8fr_1fr]">
           <div>
             <Image
-              src="/logo/spis-mark-white.png"
+              src="/logo/spis-full-white.png"
               alt="SPIS Lab"
-              width={40}
-              height={40}
-              className="mb-3 h-9 w-auto"
+              width={200}
+              height={50}
+              className="mb-4 h-8 w-auto"
             />
-            <p className="font-display text-lg font-semibold">
-              SPIS Laboratory
-            </p>
-            <p className="mt-2 max-w-xs text-sm text-white/60">
+            <p className="max-w-xs text-sm text-white/60">
               Signal Processing for Intelligent System Laboratory —
               Kelompok Keahlian SPICE, Fakultas Teknik Elektro,
               Telkom University.
@@ -31,6 +28,22 @@ export function SiteFooter() {
               <li><Link href="/pencapaian" className="hover:text-white">Pencapaian</Link></li>
               <li><Link href="/abdimas" className="hover:text-white">Abdimas</Link></li>
               <li><Link href="/rekrutmen" className="hover:text-white">Rekrutmen</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <p className="eyebrow-light mb-3">Sosial</p>
+            <ul className="space-y-2 text-sm text-white/60">
+              <li>
+                <a href="https://instagram.com/" target="_blank" rel="noreferrer" className="hover:text-white">
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/" target="_blank" rel="noreferrer" className="hover:text-white">
+                  LinkedIn
+                </a>
+              </li>
             </ul>
           </div>
 
