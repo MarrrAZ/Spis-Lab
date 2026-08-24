@@ -56,7 +56,7 @@ export default async function HomePage() {
               <div className="mt-10 flex flex-wrap items-center gap-4">
                 <Link
                   href="/tentang"
-                  className="bg-spis px-6 py-3 font-mono text-xs uppercase tracking-wider text-white transition-colors hover:bg-spis-deep"
+                  className="bg-spis-deep px-6 py-3 font-mono text-xs uppercase tracking-wider text-white transition-colors hover:bg-spis"
                 >
                   About Lab
                 </Link>
