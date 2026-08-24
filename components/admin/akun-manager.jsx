@@ -28,7 +28,7 @@ export function AkunManager({ initialAccounts, currentUserId }) {
   return (
     <div className="space-y-6">
       {showForm ? (
-        <form onSubmit={handleSubmit} className="grid gap-4 rounded-lg border border-spis bg-white p-6 md:grid-cols-2">
+        <form onSubmit={handleSubmit} className="grid gap-4 rounded-lg border border-white/10 bg-spis p-6 md:grid-cols-2">
           <Field label="Nama Lengkap">
             <input name="full_name" required className={inputClass} />
           </Field>
@@ -50,7 +50,7 @@ export function AkunManager({ initialAccounts, currentUserId }) {
             <button
               type="button"
               onClick={() => setShowForm(false)}
-              className="px-6 py-2.5 font-mono text-xs uppercase tracking-wider text-slate hover:text-ink"
+              className="px-6 py-2.5 font-mono text-xs uppercase tracking-wider text-white/70 hover:text-white"
             >
               Cancel
             </button>
@@ -78,12 +78,12 @@ function AccountRow({ account, isSelf }) {
   const [isPending, startTransition] = useTransition();
 
   return (
-    <div className="flex items-center gap-4 rounded-lg border border-spis bg-white p-4">
+    <div className="flex items-center gap-4 rounded-lg border border-white/10 bg-spis p-4">
       <div className="flex-1">
-        <p className="font-display text-sm font-semibold text-ink">
-          {account.full_name} {isSelf && <span className="text-slate-light">(Anda)</span>}
+        <p className="font-display text-sm font-semibold text-white">
+          {account.full_name} {isSelf && <span className="text-white/60">(Anda)</span>}
         </p>
-        <p className="font-mono text-[11px] text-slate-light">{account.email}</p>
+        <p className="font-mono text-[11px] text-white/60">{account.email}</p>
       </div>
       <button
         disabled={isPending || isSelf}
