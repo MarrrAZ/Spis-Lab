@@ -39,7 +39,7 @@ export function OrganigramManager({ initialEntries, members }) {
 
   return (
     <div className="space-y-8">
-      <form onSubmit={handleSubmit} className="grid gap-4 rounded-lg border border-white/10 bg-spis p-6 md:grid-cols-4">
+      <form onSubmit={handleSubmit} className="grid gap-4 rounded-lg border border-spis bg-white p-6 md:grid-cols-4">
         <div className="md:col-span-2">
           <Field label="Nama lengkap beserta gelar *jika ada">
             <input
@@ -78,7 +78,7 @@ export function OrganigramManager({ initialEntries, members }) {
           </button>
         </div>
         {members.length === 0 && (
-          <p className="md:col-span-4 text-sm text-white/60">
+          <p className="md:col-span-4 text-sm text-slate-light">
             Tambahkan dosen/asisten di menu <strong>Dosen &amp; Asisten</strong> terlebih dahulu
             sebelum menyusun organigram.
           </p>
@@ -100,15 +100,15 @@ export function OrganigramManager({ initialEntries, members }) {
 function EntryRow({ entry }) {
   const [isPending, startTransition] = useTransition();
   return (
-    <div className="flex items-center gap-4 rounded-lg border border-white/10 bg-spis p-4">
-      <span className="w-20 shrink-0 font-mono text-xs text-white/60">
+    <div className="flex items-center gap-4 rounded-lg border border-spis bg-white p-4">
+      <span className="w-20 shrink-0 font-mono text-xs text-slate-light">
         {LEVEL_LABELS[String(entry.level)] ?? `Tingkat ${entry.level}`}
       </span>
       <div className="flex-1">
-        <p className="font-display text-sm font-semibold text-white">
+        <p className="font-display text-sm font-semibold text-ink">
           {entry.members?.name ?? "—"}
         </p>
-        <p className="font-mono text-[11px] uppercase tracking-wider text-white/60">
+        <p className="font-mono text-[11px] uppercase tracking-wider text-slate-light">
           {entry.position_label}
         </p>
       </div>

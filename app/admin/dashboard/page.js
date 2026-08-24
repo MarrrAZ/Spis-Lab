@@ -38,10 +38,10 @@ export default async function DashboardPage() {
           <Link
             key={c.href}
             href={c.href}
-            className="rounded-lg border border-spis-bright bg-spis p-6 transition-colors hover:border-white"
+            className="rounded-lg border border-spis-bright bg-white p-6 transition-colors hover:border-white"
           >
-            <p className="font-mono text-3xl font-semibold text-white">{c.count}</p>
-            <p className="mt-2 font-mono text-xs uppercase tracking-wider text-white/60">
+            <p className="font-mono text-3xl font-semibold text-ink">{c.count}</p>
+            <p className="mt-2 font-mono text-xs uppercase tracking-wider text-slate-light">
               {c.label}
             </p>
           </Link>

@@ -34,10 +34,10 @@ export default async function MemberDetailPage({ params }) {
           </div>
         </section>
 
-        <section className="border-t-4 border-spis bg-spis-bright py-16 md:py-20">
+        <section className="bg-white py-16">
           <div className="container-lab grid gap-10 md:grid-cols-[320px_1fr]">
             <div>
-              <div className="aspect-[4/5] w-full overflow-hidden rounded-lg border border-spis bg-paper-2">
+              <div className="aspect-[4/5] w-full overflow-hidden rounded-lg bg-paper-2">
                 {member.photo_url ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img src={member.photo_url} alt={member.name} className="h-full w-full object-cover" />
@@ -47,31 +47,31 @@ export default async function MemberDetailPage({ params }) {
                   </div>
                 )}
               </div>
-              <h1 className="mt-5 font-display text-2xl font-bold text-white">{member.name}</h1>
-              <p className="mt-1 font-mono text-xs uppercase tracking-wider text-spis">
+              <h1 className="mt-5 font-display text-2xl font-bold text-ink">{member.name}</h1>
+              <p className="mt-1 font-mono text-xs uppercase tracking-wider text-spis-bright">
                 {member.position || member.category}
               </p>
               {(member.angkatan || member.jurusan) && (
-                <p className="mt-2 text-sm text-white/70">
+                <p className="mt-2 text-sm text-slate">
                   {[member.angkatan, member.jurusan].filter(Boolean).join(" · ")}
                 </p>
               )}
               {member.email && (
-                <p className="mt-2 text-sm text-white/60">{member.email}</p>
+                <p className="mt-2 text-sm text-slate-light">{member.email}</p>
               )}
             </div>
 
             <div>
               {member.bio && (
                 <>
-                  <p className="eyebrow-light mb-3">Tentang</p>
-                  <p className="max-w-2xl whitespace-pre-line text-sm leading-relaxed text-white/70 md:text-base">
+                  <p className="eyebrow mb-3">Tentang</p>
+                  <p className="max-w-2xl whitespace-pre-line text-sm leading-relaxed text-slate md:text-base">
                     {member.bio}
                   </p>
                 </>
               )}
 
-              <p className="eyebrow-light mb-3 mt-10">Pencapaian di SPIS Lab</p>
+              <p className="eyebrow mb-3 mt-10">Pencapaian di SPIS Lab</p>
               {achievements && achievements.length > 0 ? (
                 <div className="space-y-4">
                   {achievements.slice(0, 6).map((a) => (
@@ -86,7 +86,7 @@ export default async function MemberDetailPage({ params }) {
                   ))}
                 </div>
               ) : (
-                <p className="text-sm text-white/60">Belum ada catatan pencapaian.</p>
+                <p className="text-sm text-slate-light">Belum ada catatan pencapaian.</p>
               )}
             </div>
           </div>
