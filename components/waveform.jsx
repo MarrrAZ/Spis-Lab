@@ -4,7 +4,7 @@
 
 export function WaveformBars({ className = "", tone = "signal" }) {
   const heights = [30, 55, 40, 80, 60, 95, 50, 70, 35, 85, 45, 65, 55, 90, 40];
-  const color = tone === "signal" ? "bg-signal" : "bg-maroon";
+  const color = tone === "signal" ? "bg-spis-bright" : "bg-maroon";
 
   return (
     <div className={`flex items-end gap-[3px] ${className}`} aria-hidden="true">
@@ -43,7 +43,7 @@ export function WaveformTrace({ className = "" }) {
 export function SectionDivider({ dark = false }) {
   return (
     <div
-      className={`h-px w-full ${dark ? "bg-line-dark" : "bg-line"}`}
+      className={`h-px w-full ${dark ? "bg-white/15" : "bg-line"}`}
       aria-hidden="true"
     />
   );

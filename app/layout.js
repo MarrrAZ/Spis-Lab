@@ -27,7 +27,7 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata = {
-  title: "SPIS Lab — Signal Processing for Intelligent System | Telkom University",
+  title: "SPIS Laboratory",
   description:
     "Laboratorium riset dan praktikum Signal Processing for Intelligent System (SPIS), Kelompok Keahlian SPICE, Fakultas Teknik Elektro, Telkom University.",
 };

@@ -25,7 +25,7 @@ function AbdimasForm({ initial, onDone }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-4 rounded-lg border border-white/10 bg-spis p-6 md:grid-cols-2">
+    <form onSubmit={handleSubmit} className="grid gap-4 rounded-lg border border-spis bg-white p-6 md:grid-cols-2">
       <div className="md:col-span-2">
         <Field label="Judul Kegiatan">
           <input name="title" defaultValue={initial?.title} required className={inputClass} />
@@ -59,7 +59,7 @@ function AbdimasForm({ initial, onDone }) {
           {isPending ? "Saving…" : initial ? "Save Changes" : "New Activity"}
         </button>
         {initial && (
-          <button type="button" onClick={onDone} className="px-6 py-2.5 font-mono text-xs uppercase tracking-wider text-white/70 hover:text-white">
+          <button type="button" onClick={onDone} className="px-6 py-2.5 font-mono text-xs uppercase tracking-wider text-slate hover:text-ink">
             Cancel
           </button>
         )}
@@ -75,14 +75,14 @@ function AbdimasRow({ item }) {
   if (editing) return <AbdimasForm initial={item} onDone={() => setEditing(false)} />;
 
   return (
-    <div className="flex items-center gap-4 rounded-lg border border-white/10 bg-spis p-4">
+    <div className="flex items-center gap-4 rounded-lg border border-spis bg-white p-4">
       <div className="flex-1">
-        <p className="font-display text-sm font-semibold text-white">{item.title}</p>
-        <p className="font-mono text-[11px] uppercase tracking-wider text-white/60">
+        <p className="font-display text-sm font-semibold text-ink">{item.title}</p>
+        <p className="font-mono text-[11px] uppercase tracking-wider text-slate-light">
           {item.location || "-"} {item.activity_date ? `· ${item.activity_date}` : ""}
         </p>
       </div>
-      <button onClick={() => setEditing(true)} className="font-mono text-xs uppercase tracking-wider text-white/70 hover:text-white">
+      <button onClick={() => setEditing(true)} className="font-mono text-xs uppercase tracking-wider text-slate hover:text-ink">
         Edit
       </button>
       <button

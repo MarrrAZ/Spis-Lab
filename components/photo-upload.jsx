@@ -46,7 +46,7 @@ export function PhotoUpload({ name = "photo_url", defaultValue = "" }) {
           // eslint-disable-next-line @next/next/no-img-element
           <img src={url} alt="Pratinjau" className="h-16 w-16 object-cover" />
         ) : (
-          <div className="flex h-16 w-16 items-center justify-center bg-white/10 font-mono text-[10px] text-white/60">
+          <div className="flex h-16 w-16 items-center justify-center bg-paper-2 font-mono text-[10px] text-slate-light">
             Foto
           </div>
         )}
@@ -55,9 +55,9 @@ export function PhotoUpload({ name = "photo_url", defaultValue = "" }) {
             type="file"
             accept="image/*"
             onChange={handleChange}
-            className="text-xs text-white/70 file:mr-3 file:border-0 file:bg-spis-bright file:px-3 file:py-1.5 file:font-mono file:text-[11px] file:uppercase file:text-white"
+            className="text-xs text-slate file:mr-3 file:border-0 file:bg-spis-bright file:px-3 file:py-1.5 file:font-mono file:text-[11px] file:uppercase file:text-white"
           />
-          {uploading && <p className="mt-1 text-xs text-white/60">Mengunggah…</p>}
+          {uploading && <p className="mt-1 text-xs text-slate-light">Mengunggah…</p>}
           {error && <p className="mt-1 text-xs text-maroon">{error}</p>}
         </div>
       </div>
