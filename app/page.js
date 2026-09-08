@@ -69,17 +69,14 @@ export default async function HomePage() {
               </div>
             </div>
 
-            {/* duotone hero photo — swap src once real lab photo is provided */}
-            <div className="duotone-photo aspect-[4/3] w-full rounded-lg md:aspect-square">
-              <div className="flex h-full w-full items-center justify-center">
-                <Image
-                  src="/logo/signal-wave-white.png"
-                  alt="Visualisasi sinyal"
-                  width={420}
-                  height={236}
-                  className="h-auto w-[85%] max-w-sm opacity-90"
-                />
-              </div>
+            <div className="flex w-full items-center justify-center md:justify-end">
+              <Image
+                src="/logo/spis-logo-navy.png"
+                alt="SPIS Laboratory"
+                width={625}
+                height={313}
+                className="h-auto w-full max-w-md"
+              />
             </div>
           </div>
         </section>
