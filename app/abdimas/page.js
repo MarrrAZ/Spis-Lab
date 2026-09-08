@@ -16,24 +16,24 @@ export default async function AbdimasPage() {
     <>
       <SiteHeader />
       <main>
-        <section className="bg-white">
+        <section className="bg-spis-deep text-white">
           <div className="container-lab py-20 md:py-24">
-            <p className="eyebrow mb-4">Abdimas</p>
-            <h1 className="max-w-2xl font-display text-3xl font-semibold text-spis md:text-5xl">
+            <p className="eyebrow-light mb-4">Abdimas</p>
+            <h1 className="max-w-2xl font-display text-3xl font-semibold md:text-5xl">
               Pengabdian Kepada Masyarakat
             </h1>
-            <p className="mt-4 max-w-xl text-slate">
+            <p className="mt-4 max-w-xl text-white/70">
               Penerapan hasil riset SPIS Lab untuk memberi manfaat langsung
               bagi masyarakat.
             </p>
           </div>
         </section>
 
-        <section className="border-t-4 border-spis bg-white py-16 md:py-20">
+        <section className="border-t-4 border-spis bg-spis-bright py-16 md:py-20">
           <div className="container-lab">
             {!abdimas || abdimas.length === 0 ? (
-              <div className="rounded-lg border border-dashed border-line py-16 text-center">
-                <p className="text-sm text-slate">
+              <div className="rounded-lg border border-dashed border-white/30 py-16 text-center">
+                <p className="text-sm text-white/70">
                   Belum ada kegiatan abdimas yang ditambahkan.
                 </p>
               </div>

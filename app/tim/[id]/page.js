@@ -26,9 +26,9 @@ export default async function MemberDetailPage({ params }) {
     <>
       <SiteHeader />
       <main>
-        <section className="border-b border-spis bg-white">
+        <section className="bg-spis-deep text-white">
           <div className="container-lab py-14">
-            <Link href="/tim" className="font-mono text-xs uppercase tracking-wider text-slate hover:text-spis">
+            <Link href="/tim" className="font-mono text-xs uppercase tracking-wider text-white/60 hover:text-white">
               ← Kembali ke Tim
             </Link>
           </div>
