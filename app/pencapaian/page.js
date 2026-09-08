@@ -28,7 +28,7 @@ export default async function PencapaianPage() {
           </div>
         </section>
 
-        <section className="border-t-4 border-spis bg-paper py-16 md:py-20">
+        <section className="border-t-4 border-line bg-paper py-16 md:py-20">
           <div className="container-lab">
             <p className="eyebrow mb-6">Publikasi ({publikasi.length})</p>
             {publikasi.length === 0 ? (
@@ -73,7 +73,7 @@ export default async function PencapaianPage() {
           </div>
         </section>
 
-        <section className="border-t-4 border-spis bg-paper py-16 md:py-20">
+        <section className="border-t-4 border-line bg-paper py-16 md:py-20">
           <div className="container-lab">
             <p className="eyebrow mb-6">Pendanaan Riset ({pendanaan.length})</p>
             {pendanaan.length === 0 ? (

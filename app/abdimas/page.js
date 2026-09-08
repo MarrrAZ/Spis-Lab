@@ -29,7 +29,7 @@ export default async function AbdimasPage() {
           </div>
         </section>
 
-        <section className="border-t-4 border-spis bg-paper py-16 md:py-20">
+        <section className="border-t-4 border-line bg-paper py-16 md:py-20">
           <div className="container-lab">
             {!abdimas || abdimas.length === 0 ? (
               <div className="rounded-lg border border-dashed border-line py-16 text-center">

@@ -24,7 +24,7 @@ export default function TentangPage() {
           </div>
         </section>
 
-        <section className="border-t-4 border-spis bg-paper">
+        <section className="border-t-4 border-line bg-paper">
           <div className="container-lab grid gap-12 py-20 md:grid-cols-[1.3fr_1fr] md:py-28">
             <div className="space-y-6 text-slate">
               <p className="text-lg leading-relaxed text-ink">
@@ -62,7 +62,7 @@ export default function TentangPage() {
           </div>
         </section>
 
-        <section className="border-t-4 border-spis bg-paper py-16">
+        <section className="border-t-4 border-line bg-paper py-16">
           <div className="container-lab flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
             <div>
               <p className="eyebrow mb-3">Naungan</p>

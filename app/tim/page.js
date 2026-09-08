@@ -30,7 +30,7 @@ export default async function TimPage() {
           </div>
         </section>
 
-        <section className="border-t-4 border-spis bg-paper py-16 md:py-20">
+        <section className="border-t-4 border-line bg-paper py-16 md:py-20">
           <div className="container-lab">
             <p className="eyebrow mb-8">Dosen Pembina</p>
             {dosen.length === 0 ? (
@@ -45,7 +45,7 @@ export default async function TimPage() {
           </div>
         </section>
 
-        <section className="border-t-4 border-spis bg-paper py-16 md:py-20">
+        <section className="border-t-4 border-line bg-paper py-16 md:py-20">
           <div className="container-lab">
             <p className="eyebrow mb-8">Asisten Laboratorium</p>
             {asisten.length === 0 ? (

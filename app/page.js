@@ -82,7 +82,7 @@ export default async function HomePage() {
         </section>
 
         {/* ABOUT — About Lab (kiri) + About Us / asisten (kanan) */}
-        <section className="border-t-4 border-spis bg-paper">
+        <section className="border-t-4 border-line bg-paper">
           <div className="container-lab grid gap-12 py-20 md:grid-cols-2 md:py-24">
             <div>
               <p className="eyebrow mb-4">About Lab</p>
@@ -139,7 +139,7 @@ export default async function HomePage() {
         </section>
 
         {/* LAB ACTIVITIES — foto nyata, energi aktif */}
-        <section className="border-t-4 border-spis bg-paper py-20 md:py-24">
+        <section className="border-t-4 border-line bg-paper py-20 md:py-24">
           <div className="container-lab">
             <p className="eyebrow mb-3">Lab Activities</p>
             <h2 className="max-w-xl font-display text-2xl font-bold text-ink md:text-3xl">
@@ -157,7 +157,7 @@ export default async function HomePage() {
         </section>
 
         {/* RESEARCH INDEX — chips editorial, bukan floating card */}
-        <section className="border-t-4 border-spis bg-paper py-20 md:py-24">
+        <section className="border-t-4 border-line bg-paper py-20 md:py-24">
           <div className="container-lab">
             <p className="eyebrow mb-3">Research Index</p>
             <h2 className="max-w-xl font-display text-2xl font-bold text-ink md:text-3xl">
@@ -186,7 +186,7 @@ export default async function HomePage() {
         </section>
 
         {/* TIM — klik untuk detail */}
-        <section className="border-t-4 border-spis bg-paper py-20 md:py-24">
+        <section className="border-t-4 border-line bg-paper py-20 md:py-24">
           <div className="container-lab">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
@@ -236,7 +236,7 @@ export default async function HomePage() {
         </section>
 
         {/* PENCAPAIAN */}
-        <section className="border-t-4 border-spis bg-paper py-20 md:py-24">
+        <section className="border-t-4 border-line bg-paper py-20 md:py-24">
           <div className="container-lab">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
@@ -275,7 +275,7 @@ export default async function HomePage() {
 
         {/* REKRUTMEN CTA — aksen navy pada tombol, bukan seluruh section */}
         {openRecruitment && openRecruitment.length > 0 && (
-          <section className="border-t-4 border-spis bg-paper">
+          <section className="border-t-4 border-line bg-paper">
             <div className="container-lab flex flex-col items-start gap-6 py-16 md:flex-row md:items-center md:justify-between">
               <div>
                 <p className="font-mono text-xs uppercase tracking-widest text-slate-light">

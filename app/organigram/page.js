@@ -36,7 +36,7 @@ export default async function OrganigramPage() {
           </div>
         </section>
 
-        <section className="border-t-4 border-spis bg-paper py-16 md:py-24">
+        <section className="border-t-4 border-line bg-paper py-16 md:py-24">
           <div className="container-lab">
             {levelKeys.length === 0 ? (
               <div className="rounded-lg border border-dashed border-line py-16 text-center">

@@ -34,7 +34,7 @@ export default async function MemberDetailPage({ params }) {
           </div>
         </section>
 
-        <section className="border-t-4 border-spis bg-paper py-16 md:py-20">
+        <section className="border-t-4 border-line bg-paper py-16 md:py-20">
           <div className="container-lab grid gap-10 md:grid-cols-[320px_1fr]">
             <div>
               <div className="aspect-[4/5] w-full overflow-hidden rounded-lg border border-spis bg-paper-2">
