@@ -39,16 +39,16 @@ export default async function HomePage() {
       <SiteHeader />
       <main>
         {/* HERO — duotone photo, bold headline, real logo tagline */}
-        <section className="relative overflow-hidden bg-spis-bright text-white">
+        <section className="relative overflow-hidden bg-paper">
           <div className="container-lab grid gap-10 py-20 md:grid-cols-[1.1fr_0.9fr] md:items-center md:py-28">
             <div>
-              <p className="eyebrow-light mb-6">
+              <p className="eyebrow mb-6">
                 Telkom University · Fakultas Teknik Elektro
               </p>
-              <h1 className="font-display text-4xl font-bold leading-[1.08] md:text-5xl lg:text-[3.4rem]">
+              <h1 className="font-display text-4xl font-bold leading-[1.08] text-spis md:text-5xl lg:text-[3.4rem]">
                 Signal Processing for Intelligent Systems Laboratory
               </h1>
-              <p className="mt-6 max-w-lg text-base leading-relaxed text-white/70 md:text-lg">
+              <p className="mt-6 max-w-lg text-base leading-relaxed text-slate md:text-lg">
                 Riset radar, biosignal, dan speech processing — dari eksperimen
                 di lab sampai publikasi. Kami membangun sistem sensor yang
                 memahami dunia di sekitarnya.
@@ -62,7 +62,7 @@ export default async function HomePage() {
                 </Link>
                 <Link
                   href="/tim"
-                  className="border border-white/40 px-6 py-3 font-mono text-xs uppercase tracking-wider text-white transition-colors hover:border-white"
+                  className="border border-spis px-6 py-3 font-mono text-xs uppercase tracking-wider text-spis transition-colors hover:bg-spis hover:text-white"
                 >
                   About Us
                 </Link>
@@ -85,14 +85,14 @@ export default async function HomePage() {
         </section>
 
         {/* ABOUT — About Lab (kiri) + About Us / asisten (kanan) */}
-        <section className="border-t-4 border-spis bg-spis-bright text-white">
+        <section className="border-t-4 border-spis bg-paper">
           <div className="container-lab grid gap-12 py-20 md:grid-cols-2 md:py-24">
             <div>
-              <p className="eyebrow-light mb-4">About Lab</p>
-              <h2 className="font-display text-2xl font-bold md:text-3xl">
+              <p className="eyebrow mb-4">About Lab</p>
+              <h2 className="font-display text-2xl font-bold text-ink md:text-3xl">
                 Laboratorium riset di bawah Kelompok Keahlian SPICE
               </h2>
-              <p className="mt-4 text-sm leading-relaxed text-white/70 md:text-base">
+              <p className="mt-4 text-sm leading-relaxed text-slate md:text-base">
                 SPIS Laboratory mengembangkan teori dan algoritma pengolahan
                 sinyal untuk berbagai bidang aplikasi — radar, biosignal, dan
                 speech processing — memadukan riset dasar dengan
@@ -101,21 +101,21 @@ export default async function HomePage() {
               </p>
               <Link
                 href="/tentang"
-                className="mt-6 inline-block font-mono text-xs uppercase tracking-wider text-white underline underline-offset-4"
+                className="mt-6 inline-block font-mono text-xs uppercase tracking-wider text-spis underline underline-offset-4"
               >
                 Selengkapnya tentang lab →
               </Link>
             </div>
 
             <div>
-              <p className="eyebrow-light mb-4">About Us</p>
+              <p className="eyebrow mb-4">About Us</p>
               <div className="space-y-3">
                 {asisten.length > 0 ? (
                   asisten.slice(0, 3).map((m) => (
                     <Link
                       key={m.id}
                       href={`/tim/${m.id}`}
-                      className="flex items-center gap-4 rounded-lg border border-spis bg-white/5 p-3 transition-colors hover:bg-white/10"
+                      className="flex items-center gap-4 rounded-lg border border-spis bg-paper-2 p-3 transition-colors hover:bg-spis-soft"
                     >
                       <div className="h-12 w-12 shrink-0 overflow-hidden rounded-full bg-spis-mid">
                         {m.photo_url && (
@@ -124,15 +124,15 @@ export default async function HomePage() {
                         )}
                       </div>
                       <div className="min-w-0">
-                        <p className="truncate text-sm font-semibold text-white">{m.name}</p>
-                        <p className="truncate font-mono text-[11px] text-white/50">
+                        <p className="truncate text-sm font-semibold text-ink">{m.name}</p>
+                        <p className="truncate font-mono text-[11px] text-slate-light">
                           {[m.angkatan, m.jurusan].filter(Boolean).join(" · ") || m.position}
                         </p>
                       </div>
                     </Link>
                   ))
                 ) : (
-                  <p className="text-sm text-white/60">
+                  <p className="text-sm text-slate-light">
                     Profil asisten akan tampil di sini setelah ditambahkan lewat dashboard admin.
                   </p>
                 )}
@@ -142,10 +142,10 @@ export default async function HomePage() {
         </section>
 
         {/* LAB ACTIVITIES — foto nyata, energi aktif */}
-        <section className="border-t-4 border-spis bg-spis-bright py-20 md:py-24">
+        <section className="border-t-4 border-spis bg-paper py-20 md:py-24">
           <div className="container-lab">
-            <p className="eyebrow-light mb-3">Lab Activities</p>
-            <h2 className="max-w-xl font-display text-2xl font-bold text-white md:text-3xl">
+            <p className="eyebrow mb-3">Lab Activities</p>
+            <h2 className="max-w-xl font-display text-2xl font-bold text-ink md:text-3xl">
               Riset, Kegiatan Lab, Fasilitas Lab, dan Kolaborasi
             </h2>
             <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
@@ -160,10 +160,10 @@ export default async function HomePage() {
         </section>
 
         {/* RESEARCH INDEX — chips editorial, bukan floating card */}
-        <section className="border-t-4 border-spis bg-spis-bright py-20 md:py-24">
+        <section className="border-t-4 border-spis bg-paper py-20 md:py-24">
           <div className="container-lab">
-            <p className="eyebrow-light mb-3">Research Index</p>
-            <h2 className="max-w-xl font-display text-2xl font-bold text-white md:text-3xl">
+            <p className="eyebrow mb-3">Research Index</p>
+            <h2 className="max-w-xl font-display text-2xl font-bold text-ink md:text-3xl">
               Empat arah riset utama laboratorium
             </h2>
             <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-4">
@@ -189,16 +189,16 @@ export default async function HomePage() {
         </section>
 
         {/* TIM — klik untuk detail */}
-        <section className="border-t-4 border-spis bg-spis-bright py-20 md:py-24">
+        <section className="border-t-4 border-spis bg-paper py-20 md:py-24">
           <div className="container-lab">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
-                <p className="eyebrow-light mb-3">Our People</p>
-                <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
+                <p className="eyebrow mb-3">Our People</p>
+                <h2 className="font-display text-2xl font-bold text-ink md:text-3xl">
                   Dosen &amp; Asisten
                 </h2>
               </div>
-              <Link href="/tim" className="font-mono text-xs uppercase tracking-wider text-white underline underline-offset-4">
+              <Link href="/tim" className="font-mono text-xs uppercase tracking-wider text-spis underline underline-offset-4">
                 View All →
               </Link>
             </div>
@@ -207,7 +207,7 @@ export default async function HomePage() {
               {teamPreview.length > 0 ? (
                 teamPreview.map((m) => (
                   <Link key={m.id} href={`/tim/${m.id}`} className="group">
-                    <div className="aspect-square w-full overflow-hidden rounded-lg border border-spis bg-white/10">
+                    <div className="aspect-square w-full overflow-hidden rounded-lg border border-spis bg-paper-2">
                       {m.photo_url ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img
@@ -216,21 +216,21 @@ export default async function HomePage() {
                           className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                         />
                       ) : (
-                        <div className="flex h-full w-full items-center justify-center font-heading text-lg font-bold text-white/70">
+                        <div className="flex h-full w-full items-center justify-center font-heading text-lg font-bold text-slate-light">
                           {m.name?.[0]}
                         </div>
                       )}
                     </div>
-                    <p className="mt-3 font-heading text-sm font-semibold text-white">
+                    <p className="mt-3 font-heading text-sm font-semibold text-ink">
                       {m.name}
                     </p>
-                    <p className="font-mono text-[11px] uppercase tracking-wider text-white/60">
+                    <p className="font-mono text-[11px] uppercase tracking-wider text-slate-light">
                       {m.position || m.category}
                     </p>
                   </Link>
                 ))
               ) : (
-                <p className="col-span-full text-sm text-white/70">
+                <p className="col-span-full text-sm text-slate">
                   Profil dosen dan asisten akan tampil di sini setelah ditambahkan lewat dashboard admin.
                 </p>
               )}
@@ -239,16 +239,16 @@ export default async function HomePage() {
         </section>
 
         {/* PENCAPAIAN */}
-        <section className="border-t-4 border-spis bg-spis-bright py-20 md:py-24">
+        <section className="border-t-4 border-spis bg-paper py-20 md:py-24">
           <div className="container-lab">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
-                <p className="eyebrow-light mb-3">Recent Achievement</p>
-                <h2 className="font-display text-2xl font-bold text-white md:text-3xl">
+                <p className="eyebrow mb-3">Recent Achievement</p>
+                <h2 className="font-display text-2xl font-bold text-ink md:text-3xl">
                   Publikasi &amp; pendanaan riset
                 </h2>
               </div>
-              <Link href="/pencapaian" className="font-mono text-xs uppercase tracking-wider text-white underline underline-offset-4">
+              <Link href="/pencapaian" className="font-mono text-xs uppercase tracking-wider text-spis underline underline-offset-4">
                 View All →
               </Link>
             </div>
@@ -268,7 +268,7 @@ export default async function HomePage() {
                   </div>
                 ))
               ) : (
-                <p className="text-sm text-white/70">
+                <p className="text-sm text-slate">
                   Belum ada data pencapaian. Asisten dapat menambahkannya lewat dashboard admin.
                 </p>
               )}
@@ -276,21 +276,21 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* REKRUTMEN CTA — aksen merah minim */}
+        {/* REKRUTMEN CTA — aksen navy pada tombol, bukan seluruh section */}
         {openRecruitment && openRecruitment.length > 0 && (
-          <section className="border-t-4 border-spis bg-spis-deep text-white">
+          <section className="border-t-4 border-spis bg-paper">
             <div className="container-lab flex flex-col items-start gap-6 py-16 md:flex-row md:items-center md:justify-between">
               <div>
-                <p className="font-mono text-xs uppercase tracking-widest text-white/70">
+                <p className="font-mono text-xs uppercase tracking-widest text-slate-light">
                   Registration Open
                 </p>
-                <h2 className="mt-2 font-display text-2xl font-bold md:text-3xl">
+                <h2 className="mt-2 font-display text-2xl font-bold text-ink md:text-3xl">
                   {openRecruitment[0].title}
                 </h2>
               </div>
               <Link
                 href="/rekrutmen"
-                className="whitespace-nowrap border border-white px-6 py-3 font-mono text-xs uppercase tracking-wider transition-colors hover:bg-white hover:text-spis-deep"
+                className="whitespace-nowrap bg-spis-deep px-6 py-3 font-mono text-xs uppercase tracking-wider text-white transition-colors hover:bg-spis"
               >
                 View Details →
               </Link>

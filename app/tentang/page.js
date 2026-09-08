@@ -15,19 +15,19 @@ export default function TentangPage() {
     <>
       <SiteHeader />
       <main>
-        <section className="bg-spis-deep text-white">
+        <section className="bg-paper">
           <div className="container-lab py-20 md:py-28">
-            <p className="eyebrow-light mb-4">About</p>
-            <h1 className="max-w-2xl font-display text-3xl font-semibold leading-tight md:text-5xl">
+            <p className="eyebrow mb-4">About</p>
+            <h1 className="max-w-2xl font-display text-3xl font-semibold leading-tight text-spis md:text-5xl">
               Apa itu SPIS Laboratory?
             </h1>
           </div>
         </section>
 
-        <section className="border-t-4 border-spis bg-spis-bright text-white">
+        <section className="border-t-4 border-spis bg-paper">
           <div className="container-lab grid gap-12 py-20 md:grid-cols-[1.3fr_1fr] md:py-28">
-            <div className="space-y-6 text-white/80">
-              <p className="text-lg leading-relaxed text-white">
+            <div className="space-y-6 text-slate">
+              <p className="text-lg leading-relaxed text-ink">
                 <strong>Signal Processing for Intelligent System (SPIS) Laboratory</strong>{" "}
                 adalah laboratorium riset di bawah Kelompok
                 Keahlian Signal Processing, Information Security, and Computer
@@ -62,14 +62,14 @@ export default function TentangPage() {
           </div>
         </section>
 
-        <section className="border-t-4 border-spis bg-spis-bright py-16 text-white">
+        <section className="border-t-4 border-spis bg-paper py-16">
           <div className="container-lab flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
             <div>
-              <p className="eyebrow-light mb-3">Naungan</p>
-              <p className="font-display text-lg font-semibold text-white">
+              <p className="eyebrow mb-3">Naungan</p>
+              <p className="font-display text-lg font-semibold text-ink">
                 Kelompok Keahlian SPICE
               </p>
-              <p className="mt-1 max-w-md text-sm text-white/70">
+              <p className="mt-1 max-w-md text-sm text-slate">
                 Signal Processing, Information Security, and Computer
                 Engineering — Fakultas Teknik Elektro, Telkom University,
                 Gedung Bangkit, Bandung.
