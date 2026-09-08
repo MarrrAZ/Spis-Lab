@@ -21,7 +21,7 @@ module.exports = {
         "paper-3": "#EDEFF3",
         maroon: "#C23B3B",
         slate: "#48505E",
-        "slate-light": "#7A8496",
+        "slate-light": "#5B6472",
         line: "#E4E7EC",
       },
       fontFamily: {
