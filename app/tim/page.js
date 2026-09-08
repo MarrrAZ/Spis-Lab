@@ -21,18 +21,18 @@ export default async function TimPage() {
     <>
       <SiteHeader />
       <main>
-        <section className="bg-white">
+        <section className="bg-spis-deep text-white">
           <div className="container-lab py-20 md:py-24">
-            <p className="eyebrow mb-4">Team</p>
-            <h1 className="max-w-2xl font-display text-3xl font-semibold text-spis md:text-5xl">
+            <p className="eyebrow-light mb-4">Team</p>
+            <h1 className="max-w-2xl font-display text-3xl font-semibold md:text-5xl">
               Dosen &amp; Asisten Laboratorium
             </h1>
           </div>
         </section>
 
-        <section className="border-t-4 border-spis bg-white py-16 md:py-20">
+        <section className="border-t-4 border-spis bg-spis-bright py-16 md:py-20">
           <div className="container-lab">
-            <p className="eyebrow mb-8">Dosen Pembina</p>
+            <p className="eyebrow-light mb-8">Dosen Pembina</p>
             {dosen.length === 0 ? (
               <EmptyState text="Profil dosen belum ditambahkan." />
             ) : (
@@ -45,9 +45,9 @@ export default async function TimPage() {
           </div>
         </section>
 
-        <section className="border-t-4 border-spis bg-white py-16 md:py-20">
+        <section className="border-t-4 border-spis bg-spis-bright py-16 md:py-20">
           <div className="container-lab">
-            <p className="eyebrow mb-8">Asisten Laboratorium</p>
+            <p className="eyebrow-light mb-8">Asisten Laboratorium</p>
             {asisten.length === 0 ? (
               <EmptyState text="Profil asisten belum ditambahkan." />
             ) : (
@@ -68,7 +68,7 @@ export default async function TimPage() {
 function MemberCard({ member }) {
   return (
     <Link href={`/tim/${member.id}`} className="group block">
-      <div className="aspect-[3/4] w-full overflow-hidden rounded-lg border border-spis bg-paper-2">
+      <div className="aspect-[3/4] w-full overflow-hidden rounded-lg border border-spis bg-white">
         {member.photo_url ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -82,7 +82,7 @@ function MemberCard({ member }) {
           </div>
         )}
       </div>
-      <p className="mt-3 font-display text-sm font-semibold text-ink">
+      <p className="mt-3 font-display text-sm font-semibold text-white">
         {member.name}
       </p>
       {member.position && (
@@ -91,7 +91,7 @@ function MemberCard({ member }) {
         </p>
       )}
       {member.bio && (
-        <p className="mt-2 text-xs leading-relaxed text-slate">{member.bio}</p>
+        <p className="mt-2 text-xs leading-relaxed text-white/70">{member.bio}</p>
       )}
     </Link>
   );
@@ -99,8 +99,8 @@ function MemberCard({ member }) {
 
 function EmptyState({ text }) {
   return (
-    <div className="rounded-lg border border-dashed border-line py-16 text-center">
-      <p className="text-sm text-slate">{text}</p>
+    <div className="rounded-lg border border-dashed border-white/30 py-16 text-center">
+      <p className="text-sm text-white/70">{text}</p>
     </div>
   );
 }
