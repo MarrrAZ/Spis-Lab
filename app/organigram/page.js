@@ -30,7 +30,7 @@ export default async function OrganigramPage() {
         <section className="bg-paper">
           <div className="container-lab py-20 md:py-24">
             <p className="eyebrow mb-4">Organigram</p>
-            <h1 className="max-w-2xl font-display text-3xl font-semibold md:text-5xl">
+            <h1 className="max-w-2xl font-display text-3xl font-semibold text-spis md:text-5xl">
               Struktur Organisasi Laboratorium
             </h1>
           </div>
