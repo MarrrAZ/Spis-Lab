@@ -31,7 +31,7 @@ function AchievementForm({ initial, onDone }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-4 rounded-lg border border-white/10 bg-spis p-6 md:grid-cols-2">
+    <form onSubmit={handleSubmit} className="grid gap-4 rounded-lg border border-spis bg-white p-6 md:grid-cols-2">
       <Field label="Jenis">
         <select name="type" defaultValue={initial?.type || "publikasi"} className={inputClass} required>
           <option value="publikasi">Publikasi</option>
@@ -77,7 +77,7 @@ function AchievementForm({ initial, onDone }) {
           <button
             type="button"
             onClick={onDone}
-            className="px-6 py-2.5 font-mono text-xs uppercase tracking-wider text-white/70 hover:text-white"
+            className="px-6 py-2.5 font-mono text-xs uppercase tracking-wider text-slate hover:text-ink"
           >
             Cancel
           </button>
@@ -96,15 +96,15 @@ function AchievementRow({ item }) {
   }
 
   return (
-    <div className="flex items-center gap-4 rounded-lg border border-white/10 bg-spis p-4">
-      <span className="w-16 shrink-0 font-mono text-xs text-white/60">{item.year ?? "—"}</span>
+    <div className="flex items-center gap-4 rounded-lg border border-spis bg-white p-4">
+      <span className="w-16 shrink-0 font-mono text-xs text-slate-light">{item.year ?? "—"}</span>
       <div className="flex-1">
-        <p className="font-display text-sm font-semibold text-white">{item.title}</p>
-        <p className="font-mono text-[11px] uppercase tracking-wider text-white/60">
+        <p className="font-display text-sm font-semibold text-ink">{item.title}</p>
+        <p className="font-mono text-[11px] uppercase tracking-wider text-slate-light">
           {item.type}
         </p>
       </div>
-      <button onClick={() => setEditing(true)} className="font-mono text-xs uppercase tracking-wider text-white/70 hover:text-white">
+      <button onClick={() => setEditing(true)} className="font-mono text-xs uppercase tracking-wider text-slate hover:text-ink">
         Edit
       </button>
       <button

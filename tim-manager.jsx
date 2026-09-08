@@ -28,7 +28,7 @@ function MemberForm({ initial, onDone }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-4 rounded-lg border border-white/10 bg-spis p-6 md:grid-cols-2">
+    <form onSubmit={handleSubmit} className="grid gap-4 rounded-lg border border-spis bg-white p-6 md:grid-cols-2">
       <Field label="Kategori">
         <select name="category" defaultValue={initial?.category || "asisten"} className={inputClass} required>
           <option value="dosen">Dosen</option>
@@ -98,7 +98,7 @@ function MemberForm({ initial, onDone }) {
           <button
             type="button"
             onClick={onDone}
-            className="px-6 py-2.5 font-mono text-xs uppercase tracking-wider text-white/70 hover:text-white"
+            className="px-6 py-2.5 font-mono text-xs uppercase tracking-wider text-slate hover:text-ink"
           >
             Cancel
           </button>
@@ -117,22 +117,22 @@ function MemberRow({ member }) {
   }
 
   return (
-    <div className="flex items-center gap-4 rounded-lg border border-white/10 bg-spis p-4">
+    <div className="flex items-center gap-4 rounded-lg border border-spis bg-white p-4">
       {member.photo_url ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img src={member.photo_url} alt={member.name} className="h-12 w-12 object-cover" />
       ) : (
-        <div className="h-12 w-12 bg-white/10" />
+        <div className="h-12 w-12 bg-paper-2" />
       )}
       <div className="flex-1">
-        <p className="font-display text-sm font-semibold text-white">{member.name}</p>
-        <p className="font-mono text-[11px] uppercase tracking-wider text-white/60">
+        <p className="font-display text-sm font-semibold text-ink">{member.name}</p>
+        <p className="font-mono text-[11px] uppercase tracking-wider text-slate-light">
           {member.category} · {member.position || "-"}
         </p>
       </div>
       <button
         onClick={() => setEditing(true)}
-        className="font-mono text-xs uppercase tracking-wider text-white/70 hover:text-white"
+        className="font-mono text-xs uppercase tracking-wider text-slate hover:text-ink"
       >
         Edit
       </button>

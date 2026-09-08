@@ -30,7 +30,7 @@ body {
 
   .duotone-photo {
     position: relative;
-    background-color: theme("colors.spis.bright");
+    background-color: theme("colors.spis.deep");
     overflow: hidden;
   }
 
@@ -43,7 +43,7 @@ body {
     content: "";
     position: absolute;
     inset: 0;
-    background-color: theme("colors.spis.bright");
+    background-color: theme("colors.spis.DEFAULT");
     mix-blend-mode: color;
     pointer-events: none;
   }

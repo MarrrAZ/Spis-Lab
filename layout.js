@@ -20,7 +20,7 @@ export default async function AdminLayout({ children }) {
   } = await supabase.auth.getUser();
 
   return (
-    <div className="flex min-h-screen bg-spis-deep">
+    <div className="flex min-h-screen bg-paper-2">
       <aside className="hidden w-64 shrink-0 flex-col bg-spis text-white md:flex">
         <div className="border-b border-white/10 p-6">
           <Image

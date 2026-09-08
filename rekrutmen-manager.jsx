@@ -31,7 +31,7 @@ function RecruitmentForm({ initial, onDone }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-4 rounded-lg border border-white/10 bg-spis p-6 md:grid-cols-2">
+    <form onSubmit={handleSubmit} className="grid gap-4 rounded-lg border border-spis bg-white p-6 md:grid-cols-2">
       <div className="md:col-span-2">
         <Field label="Judul">
           <input name="title" defaultValue={initial?.title} required className={inputClass} />
@@ -41,7 +41,7 @@ function RecruitmentForm({ initial, onDone }) {
         <input name="deadline" type="date" defaultValue={initial?.deadline || ""} className={inputClass} />
       </Field>
       <Field label="Status">
-        <label className="mt-2.5 flex items-center gap-2 text-sm text-white/70">
+        <label className="mt-2.5 flex items-center gap-2 text-sm text-slate">
           <input
             type="checkbox"
             name="is_open"
@@ -78,7 +78,7 @@ function RecruitmentForm({ initial, onDone }) {
           {isPending ? "Saving…" : initial ? "Save Changes" : "New Recruitment"}
         </button>
         {initial && (
-          <button type="button" onClick={onDone} className="px-6 py-2.5 font-mono text-xs uppercase tracking-wider text-white/70 hover:text-white">
+          <button type="button" onClick={onDone} className="px-6 py-2.5 font-mono text-xs uppercase tracking-wider text-slate hover:text-ink">
             Cancel
           </button>
         )}
@@ -94,18 +94,18 @@ function RecruitmentRow({ item }) {
   if (editing) return <RecruitmentForm initial={item} onDone={() => setEditing(false)} />;
 
   return (
-    <div className="flex items-center gap-4 rounded-lg border border-white/10 bg-spis p-4">
+    <div className="flex items-center gap-4 rounded-lg border border-spis bg-white p-4">
       <span
         className={`font-mono text-[10px] uppercase tracking-wider px-2 py-1 ${
-          item.is_open ? "bg-spis-bright text-white" : "bg-white/10 text-white/60"
+          item.is_open ? "bg-spis-bright text-white" : "bg-paper-2 text-slate-light"
         }`}
       >
         {item.is_open ? "Open" : "Closed"}
       </span>
       <div className="flex-1">
-        <p className="font-display text-sm font-semibold text-white">{item.title}</p>
+        <p className="font-display text-sm font-semibold text-ink">{item.title}</p>
       </div>
-      <button onClick={() => setEditing(true)} className="font-mono text-xs uppercase tracking-wider text-white/70 hover:text-white">
+      <button onClick={() => setEditing(true)} className="font-mono text-xs uppercase tracking-wider text-slate hover:text-ink">
         Edit
       </button>
       <button
