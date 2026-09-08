@@ -1,0 +1,304 @@
+import Link from "next/link";
+import Image from "next/image";
+import { createClient } from "@/lib/supabase/server";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+
+export const revalidate = 0;
+
+const LAB_PHOTOS = [
+  "/images/lab/lab-1.jpg",
+  "/images/lab/lab-2.jpg",
+  "/images/lab/lab-3.jpg",
+  "/images/lab/lab-4.jpg",
+];
+
+const RESEARCH_INDEX = [
+  { code: "01", title: "Radar", desc: "Deteksi, estimasi, dan pelacakan objek pada sistem radar & sonar." },
+  { code: "02", title: "Biosignal", desc: "Ekstraksi informasi dari sinyal biomedis untuk aplikasi kesehatan." },
+  { code: "03", title: "Speech Processing", desc: "Pemrosesan sinyal suara untuk interaksi & sistem cerdas." },
+  { code: "04", title: "AI Signal Processing", desc: "Machine learning & deep learning pada data sinyal berdimensi tinggi." },
+];
+
+export default async function HomePage() {
+  const supabase = createClient();
+
+  const [{ data: achievements }, { data: openRecruitment }, { data: members }] =
+    await Promise.all([
+      supabase.from("achievements").select("*").order("year", { ascending: false }).limit(3),
+      supabase.from("recruitment").select("*").eq("is_open", true).order("created_at", { ascending: false }).limit(1),
+      supabase.from("members").select("*").order("order_index", { ascending: true }).limit(6),
+    ]);
+
+  const dosen = (members || []).filter((m) => m.category === "dosen");
+  const asisten = (members || []).filter((m) => m.category === "asisten");
+  const teamPreview = [...dosen, ...asisten].slice(0, 4);
+
+  return (
+    <>
+      <SiteHeader />
+      <main>
+        {/* HERO — background putih, headline navy #0F2C66 */}
+        <section className="relative overflow-hidden bg-white">
+          <div className="container-lab grid gap-10 py-20 md:grid-cols-[1.1fr_0.9fr] md:items-center md:py-28">
+            <div>
+              <p className="eyebrow mb-6">
+                Telkom University · Fakultas Teknik Elektro
+              </p>
+              <h1 className="font-display text-4xl font-bold leading-[1.08] text-spis md:text-5xl lg:text-[3.4rem]">
+                Signal Processing for Intelligent Systems Laboratory
+              </h1>
+              <p className="mt-6 max-w-lg text-base leading-relaxed text-slate md:text-lg">
+                Riset radar, biosignal, dan speech processing — dari eksperimen
+                di lab sampai publikasi. Kami membangun sistem sensor yang
+                memahami dunia di sekitarnya.
+              </p>
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <Link
+                  href="/tentang"
+                  className="bg-spis px-6 py-3 font-mono text-xs uppercase tracking-wider text-white transition-colors hover:bg-spis-deep"
+                >
+                  About Lab
+                </Link>
+                <Link
+                  href="/tim"
+                  className="border border-spis px-6 py-3 font-mono text-xs uppercase tracking-wider text-spis transition-colors hover:bg-spis hover:text-white"
+                >
+                  About Us
+                </Link>
+              </div>
+            </div>
+
+            {/* duotone hero photo — swap src once real lab photo is provided */}
+            <div className="duotone-photo aspect-[4/3] w-full rounded-lg border border-spis md:aspect-square">
+              <div className="flex h-full w-full items-center justify-center">
+                <Image
+                  src="/logo/signal-wave-white.png"
+                  alt="Visualisasi sinyal"
+                  width={420}
+                  height={236}
+                  className="h-auto w-[85%] max-w-sm opacity-90"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ABOUT — About Lab (kiri) + About Us / asisten (kanan) */}
+        <section className="border-t-4 border-spis bg-white">
+          <div className="container-lab grid gap-12 py-20 md:grid-cols-2 md:py-24">
+            <div>
+              <p className="eyebrow mb-4">About Lab</p>
+              <h2 className="font-display text-2xl font-bold text-ink md:text-3xl">
+                Laboratorium riset di bawah Kelompok Keahlian SPICE
+              </h2>
+              <p className="mt-4 text-sm leading-relaxed text-slate md:text-base">
+                SPIS Laboratory mengembangkan teori dan algoritma pengolahan
+                sinyal untuk berbagai bidang aplikasi — radar, biosignal, dan
+                speech processing — memadukan riset dasar dengan
+                kolaborasi mahasiswa di Fakultas Teknik Elektro, Telkom
+                University.
+              </p>
+              <Link
+                href="/tentang"
+                className="mt-6 inline-block font-mono text-xs uppercase tracking-wider text-spis underline underline-offset-4"
+              >
+                Selengkapnya tentang lab →
+              </Link>
+            </div>
+
+            <div>
+              <p className="eyebrow mb-4">About Us</p>
+              <div className="space-y-3">
+                {asisten.length > 0 ? (
+                  asisten.slice(0, 3).map((m) => (
+                    <Link
+                      key={m.id}
+                      href={`/tim/${m.id}`}
+                      className="flex items-center gap-4 rounded-lg border border-spis bg-white p-3 transition-colors hover:bg-paper-2"
+                    >
+                      <div className="h-12 w-12 shrink-0 overflow-hidden rounded-full bg-spis-soft">
+                        {m.photo_url && (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img src={m.photo_url} alt={m.name} className="h-full w-full object-cover" />
+                        )}
+                      </div>
+                      <div className="min-w-0">
+                        <p className="truncate text-sm font-semibold text-ink">{m.name}</p>
+                        <p className="truncate font-mono text-[11px] text-slate-light">
+                          {[m.angkatan, m.jurusan].filter(Boolean).join(" · ") || m.position}
+                        </p>
+                      </div>
+                    </Link>
+                  ))
+                ) : (
+                  <p className="text-sm text-slate">
+                    Profil asisten akan tampil di sini setelah ditambahkan lewat dashboard admin.
+                  </p>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* LAB ACTIVITIES — foto nyata, energi aktif */}
+        <section className="border-t-4 border-spis bg-white py-20 md:py-24">
+          <div className="container-lab">
+            <p className="eyebrow mb-3">Lab Activities</p>
+            <h2 className="max-w-xl font-display text-2xl font-bold text-ink md:text-3xl">
+              Riset, Kegiatan Lab, Fasilitas Lab, dan Kolaborasi
+            </h2>
+            <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
+              {LAB_PHOTOS.map((src, i) => (
+                <div key={src} className="aspect-square overflow-hidden rounded-lg border border-spis bg-paper-2">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={src} alt={`Kegiatan lab SPIS ${i + 1}`} className="h-full w-full object-cover" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* RESEARCH INDEX — chips editorial, bukan floating card */}
+        <section className="border-t-4 border-spis bg-white py-20 md:py-24">
+          <div className="container-lab">
+            <p className="eyebrow mb-3">Research Index</p>
+            <h2 className="max-w-xl font-display text-2xl font-bold text-ink md:text-3xl">
+              Empat arah riset utama laboratorium
+            </h2>
+            <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-4">
+              {RESEARCH_INDEX.map((r, i) => (
+                <div
+                  key={r.code}
+                  className="rounded-lg border border-spis px-5 py-4 text-white"
+                  style={{
+                    backgroundColor: ["#0F2C66", "#0B2050", "#173768", "#4C7EBF"][i],
+                  }}
+                >
+                  <p className="font-mono text-[10px] uppercase tracking-widest text-white/60">
+                    {r.code}
+                  </p>
+                  <p className="mt-1 font-heading text-sm font-bold">{r.title}</p>
+                  <p className="mt-1 max-w-[220px] text-xs leading-relaxed text-white/70">
+                    {r.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* TIM — klik untuk detail */}
+        <section className="border-t-4 border-spis bg-white py-20 md:py-24">
+          <div className="container-lab">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <p className="eyebrow mb-3">Our People</p>
+                <h2 className="font-display text-2xl font-bold text-ink md:text-3xl">
+                  Dosen &amp; Asisten
+                </h2>
+              </div>
+              <Link href="/tim" className="font-mono text-xs uppercase tracking-wider text-spis underline underline-offset-4">
+                View All →
+              </Link>
+            </div>
+
+            <div className="mt-10 grid grid-cols-2 gap-6 md:grid-cols-4">
+              {teamPreview.length > 0 ? (
+                teamPreview.map((m) => (
+                  <Link key={m.id} href={`/tim/${m.id}`} className="group">
+                    <div className="aspect-square w-full overflow-hidden rounded-lg border border-spis bg-paper-2">
+                      {m.photo_url ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={m.photo_url}
+                          alt={m.name}
+                          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                      ) : (
+                        <div className="flex h-full w-full items-center justify-center font-heading text-lg font-bold text-spis">
+                          {m.name?.[0]}
+                        </div>
+                      )}
+                    </div>
+                    <p className="mt-3 font-heading text-sm font-semibold text-ink">
+                      {m.name}
+                    </p>
+                    <p className="font-mono text-[11px] uppercase tracking-wider text-slate-light">
+                      {m.position || m.category}
+                    </p>
+                  </Link>
+                ))
+              ) : (
+                <p className="col-span-full text-sm text-slate">
+                  Profil dosen dan asisten akan tampil di sini setelah ditambahkan lewat dashboard admin.
+                </p>
+              )}
+            </div>
+          </div>
+        </section>
+
+        {/* PENCAPAIAN */}
+        <section className="border-t-4 border-spis bg-white py-20 md:py-24">
+          <div className="container-lab">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <p className="eyebrow mb-3">Recent Achievement</p>
+                <h2 className="font-display text-2xl font-bold text-ink md:text-3xl">
+                  Publikasi &amp; pendanaan riset
+                </h2>
+              </div>
+              <Link href="/pencapaian" className="font-mono text-xs uppercase tracking-wider text-spis underline underline-offset-4">
+                View All →
+              </Link>
+            </div>
+
+            <div className="mt-10 grid gap-6 md:grid-cols-3">
+              {achievements && achievements.length > 0 ? (
+                achievements.map((item) => (
+                  <div key={item.id} className="rounded-lg border-2 border-spis bg-white p-6">
+                    <span className="font-mono text-[11px] uppercase tracking-wider text-spis-bright">
+                      {item.type === "publikasi" ? "Publikasi" : "Pendanaan Riset"}
+                      {item.year ? ` · ${item.year}` : ""}
+                    </span>
+                    <h3 className="mt-3 font-heading text-base font-semibold leading-snug text-ink">
+                      {item.title}
+                    </h3>
+                    {item.venue && <p className="mt-2 text-sm text-slate">{item.venue}</p>}
+                  </div>
+                ))
+              ) : (
+                <p className="text-sm text-slate">
+                  Belum ada data pencapaian. Asisten dapat menambahkannya lewat dashboard admin.
+                </p>
+              )}
+            </div>
+          </div>
+        </section>
+
+        {/* REKRUTMEN CTA — tetap satu pita navy sebagai penekanan visual */}
+        {openRecruitment && openRecruitment.length > 0 && (
+          <section className="border-t-4 border-spis bg-spis-deep text-white">
+            <div className="container-lab flex flex-col items-start gap-6 py-16 md:flex-row md:items-center md:justify-between">
+              <div>
+                <p className="font-mono text-xs uppercase tracking-widest text-white/70">
+                  Registration Open
+                </p>
+                <h2 className="mt-2 font-display text-2xl font-bold md:text-3xl">
+                  {openRecruitment[0].title}
+                </h2>
+              </div>
+              <Link
+                href="/rekrutmen"
+                className="whitespace-nowrap border border-white px-6 py-3 font-mono text-xs uppercase tracking-wider transition-colors hover:bg-white hover:text-spis-deep"
+              >
+                View Details →
+              </Link>
+            </div>
+          </section>
+        )}
+      </main>
+      <SiteFooter />
+    </>
+  );
+}
