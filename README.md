@@ -1,9 +1,15 @@
 # Website SPIS Lab — Panduan Lengkap (Untuk Pemula)
 
 Website ini dibangun dengan **Next.js** (kode) + **Supabase** (database,
-login, penyimpanan foto) + **Vercel** (tempat website di-online-kan),
-persis seperti website lama Anda — tapi sekarang datanya benar-benar
-tersimpan dan bisa diubah sendiri oleh asisten lewat halaman admin.
+login, penyimpanan foto) + **Vercel** (tempat website di-online-kan).
+
+> **Catatan penting:** Sejak repo ini dipisah, project ini **hanya berisi
+> website publik** (read-only, tanpa login sama sekali). Sistem login
+> asisten & admin panel sekarang ada di **project terpisah**
+> (`spis-lab-admin`, deploy ke `asisten.spis-laboratory.vercel.app`).
+> Keduanya connect ke **Supabase project yang sama**, jadi konten yang
+> diubah lewat admin panel otomatis muncul di sini — tidak perlu
+> langkah sinkronisasi tambahan.
 
 Ikuti langkah 1–7 secara berurutan. Semua gratis untuk skala website
 laboratorium seperti ini.
@@ -15,11 +21,8 @@ laboratorium seperti ini.
 - **Halaman publik** (bisa diakses siapa saja): Beranda, Tentang,
   Pencapaian (publikasi & pendanaan riset), Abdimas, Rekrutmen,
   Organigram, dan Tim (Dosen & Asisten).
-- **`/admin/login`**: halaman login khusus asisten.
-- **Dashboard admin**: setelah login, asisten bisa menambah/mengubah/
-  menghapus semua info di atas, termasuk mengunggah foto.
-- **Kelola Akun** (`/admin/akun`): admin bisa menambah atau menghapus
-  akun login asisten lain.
+- Tidak ada login atau admin panel di project ini — semua itu ada di
+  project `spis-lab-admin` yang terpisah.
 
 ---
 
@@ -82,14 +85,16 @@ Vercel akan mengambil kode dari GitHub untuk di-deploy.
 1. Di dashboard Vercel, klik **Add New** → **Project**.
 2. Cari repository `spis-lab` yang tadi dibuat → klik **Import**.
 3. Sebelum klik Deploy, buka bagian **Environment Variables** dan
-   tambahkan 3 baris berikut (Name di kiri, Value di kanan) — isi
+   tambahkan 2 baris berikut (Name di kiri, Value di kanan) — isi
    Value dengan nilai dari Langkah 2:
 
    | Name | Value |
    |---|---|
    | `NEXT_PUBLIC_SUPABASE_URL` | Project URL dari Supabase |
    | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | anon public key |
-   | `SUPABASE_SERVICE_ROLE_KEY` | service_role key |
+
+   (`SUPABASE_SERVICE_ROLE_KEY` **tidak** dibutuhkan di sini — itu cuma
+   dipakai di project `spis-lab-admin`.)
 
 4. Klik **Deploy** dan tunggu ± 1–2 menit.
 5. Setelah selesai, Vercel akan memberi Anda link seperti
@@ -119,7 +124,7 @@ dari Supabase:
    where email = 'email-yang-baru-didaftarkan@contoh.com';
    ```
 
-3. Sekarang buka `https://[domain-website-anda]/admin/login` dan login
+3. Sekarang buka `https://asisten.spis-laboratory.vercel.app` dan login
    dengan email + password tadi.
 4. Setelah berhasil login, akun asisten **berikutnya** cukup dibuat
    lewat menu **Kelola Akun** di dashboard — tidak perlu lagi lewat
@@ -127,7 +132,7 @@ dari Supabase:
 
 ## Langkah 7 — Mulai Isi Konten
 
-Login ke `/admin/login`, lalu lewat menu di sidebar:
+Login ke `https://asisten.spis-laboratory.vercel.app`, lalu lewat menu di sidebar:
 
 - **Dosen & Asisten** — isi profil beserta foto (isi ini dulu, karena
   Organigram mengambil data dari sini).

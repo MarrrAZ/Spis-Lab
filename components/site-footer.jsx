@@ -52,7 +52,6 @@ export function SiteFooter() {
             <ul className="space-y-2 text-sm text-white/60">
               <li><Link href="/organigram" className="hover:text-white">Organigram</Link></li>
               <li><Link href="/tim" className="hover:text-white">Dosen &amp; Asisten</Link></li>
-              <li><Link href="/admin/login" className="hover:text-white">Login Assistant</Link></li>
             </ul>
           </div>
 

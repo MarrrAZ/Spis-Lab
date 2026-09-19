@@ -47,12 +47,6 @@ export function SiteHeader() {
               {item.label}
             </Link>
           ))}
-          <Link
-            href="/admin/login"
-            className="border border-white/40 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider text-white transition-colors hover:bg-white hover:text-spis"
-          >
-            Login Assistant
-          </Link>
         </nav>
 
         <button
@@ -80,13 +74,6 @@ export function SiteHeader() {
                 {item.label}
               </Link>
             ))}
-            <Link
-              href="/admin/login"
-              onClick={() => setOpen(false)}
-              className="py-3 font-mono text-xs uppercase tracking-wider text-white"
-            >
-              Login Assistant →
-            </Link>
           </div>
         </nav>
       )}
