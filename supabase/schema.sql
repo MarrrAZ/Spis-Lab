@@ -81,6 +81,34 @@ create policy "achievements_authenticated_write"
   with check (true);
 
 -- ---------------------------------------------------------------------
+-- 3b. ACHIEVEMENT_MEMBERS : penghubung many-to-many achievements <-> members
+--     (menentukan pencapaian ini muncul di profil siapa saja)
+-- ---------------------------------------------------------------------
+create table if not exists public.achievement_members (
+  achievement_id uuid not null references public.achievements (id) on delete cascade,
+  member_id uuid not null references public.members (id) on delete cascade,
+  primary key (achievement_id, member_id)
+);
+
+create index if not exists achievement_members_member_id_idx
+  on public.achievement_members (member_id);
+create index if not exists achievement_members_achievement_id_idx
+  on public.achievement_members (achievement_id);
+
+alter table public.achievement_members enable row level security;
+
+create policy "achievement_members_public_select"
+  on public.achievement_members for select
+  to anon, authenticated
+  using (true);
+
+create policy "achievement_members_authenticated_write"
+  on public.achievement_members for all
+  to authenticated
+  using (true)
+  with check (true);
+
+-- ---------------------------------------------------------------------
 -- 4. ABDIMAS : kegiatan pengabdian kepada masyarakat
 -- ---------------------------------------------------------------------
 create table if not exists public.abdimas (

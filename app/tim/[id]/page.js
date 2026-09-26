@@ -17,10 +17,20 @@ export default async function MemberDetailPage({ params }) {
 
   if (!member) notFound();
 
-  const { data: achievements } = await supabase
-    .from("achievements")
-    .select("*")
-    .order("year", { ascending: false });
+  const { data: links } = await supabase
+    .from("achievement_members")
+    .select("achievement_id")
+    .eq("member_id", params.id);
+
+  const achievementIds = (links ?? []).map((l) => l.achievement_id);
+
+  const { data: achievements } = achievementIds.length
+    ? await supabase
+        .from("achievements")
+        .select("*")
+        .in("id", achievementIds)
+        .order("year", { ascending: false })
+    : { data: [] };
 
   return (
     <>
@@ -74,7 +84,7 @@ export default async function MemberDetailPage({ params }) {
               <p className="eyebrow mb-3 mt-10">Pencapaian di SPIS Lab</p>
               {achievements && achievements.length > 0 ? (
                 <div className="space-y-4">
-                  {achievements.slice(0, 6).map((a) => (
+                  {achievements.map((a) => (
                     <div key={a.id} className="card-lab p-5">
                       <span className="font-mono text-[11px] uppercase tracking-wider text-spis-bright">
                         {a.type === "publikasi" ? "Publikasi" : "Pendanaan Riset"}
