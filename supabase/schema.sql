@@ -223,6 +223,48 @@ create policy "recruitment_authenticated_write"
   with check (true);
 
 -- ---------------------------------------------------------------------
+-- 6b. PROJECTS : katalog alat/teknologi yang dikembangkan SPIS Lab
+-- ---------------------------------------------------------------------
+create table if not exists public.projects (
+  id uuid primary key default gen_random_uuid(),
+  slug text unique not null,
+  name text not null,
+  category text,
+  year int,
+  status text,
+  cover_image text,
+  gallery jsonb not null default '[]'::jsonb,
+  short_description text,
+  overview text,
+  purpose text,
+  how_it_works text,
+  specifications jsonb not null default '[]'::jsonb,
+  applications text,
+  developers text,
+  supervisor text,
+  outputs jsonb not null default '[]'::jsonb,
+  related_publications jsonb not null default '[]'::jsonb,
+  order_index int not null default 0,
+  created_at timestamptz not null default now()
+);
+
+create index if not exists projects_slug_idx on public.projects (slug);
+create index if not exists projects_category_idx on public.projects (category);
+
+alter table public.projects enable row level security;
+
+create policy "projects_public_select"
+  on public.projects for select
+  to anon, authenticated
+  using (true);
+
+create policy "projects_authenticated_write"
+  on public.projects for all
+  to authenticated
+  using (true)
+  with check (true);
+
+-- ---------------------------------------------------------------------
 -- 6. ORGANIGRAM : struktur organisasi lab (mengacu ke tabel members)
 -- ---------------------------------------------------------------------
 create table if not exists public.organigram (

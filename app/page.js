@@ -214,7 +214,7 @@ export default async function HomePage() {
                   Dosen &amp; Asisten
                 </h2>
               </div>
-              <Link href="/tim" className="font-mono text-xs uppercase tracking-wider text-spis underline underline-offset-4">
+              <Link href="/organigram" className="font-mono text-xs uppercase tracking-wider text-spis underline underline-offset-4">
                 View All →
               </Link>
             </div>

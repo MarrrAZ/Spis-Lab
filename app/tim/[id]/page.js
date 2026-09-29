@@ -38,8 +38,8 @@ export default async function MemberDetailPage({ params }) {
       <main>
         <section className="bg-paper">
           <div className="container-lab py-14">
-            <Link href="/tim" className="font-mono text-xs uppercase tracking-wider text-slate-light hover:text-ink">
-              ← Kembali ke Tim
+            <Link href="/organigram" className="font-mono text-xs uppercase tracking-wider text-slate-light hover:text-ink">
+              ← Kembali ke Organigram
             </Link>
           </div>
         </section>

@@ -51,7 +51,7 @@ export function SiteFooter() {
             <p className="eyebrow-light mb-3">Organisasi</p>
             <ul className="space-y-2 text-sm text-white/60">
               <li><Link href="/organigram" className="hover:text-white">Organigram</Link></li>
-              <li><Link href="/tim" className="hover:text-white">Dosen &amp; Asisten</Link></li>
+              <li><Link href="/organigram" className="hover:text-white">Dosen &amp; Asisten</Link></li>
             </ul>
           </div>
 

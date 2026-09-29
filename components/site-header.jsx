@@ -12,7 +12,7 @@ const NAV = [
   { href: "/abdimas", label: "Abdimas" },
   { href: "/rekrutmen", label: "Recruitment" },
   { href: "/organigram", label: "Organigram" },
-  { href: "/tim", label: "Team" },
+  { href: "/projects", label: "Projects" },
 ];
 
 export function SiteHeader() {
