@@ -6,13 +6,6 @@ import { SiteFooter } from "@/components/site-footer";
 
 export const revalidate = 0;
 
-const LAB_PHOTOS = [
-  "/images/lab/lab-1.jpg",
-  "/images/lab/lab-2.jpg",
-  "/images/lab/lab-3.jpg",
-  "/images/lab/lab-4.jpg",
-];
-
 const RESEARCH_INDEX = [
   { code: "01", title: "Radar", desc: "Deteksi, estimasi, dan pelacakan objek pada sistem radar & sonar." },
   { code: "02", title: "Biosignal", desc: "Ekstraksi informasi dari sinyal biomedis untuk aplikasi kesehatan." },
@@ -23,11 +16,12 @@ const RESEARCH_INDEX = [
 export default async function HomePage() {
   const supabase = createClient();
 
-  const [{ data: achievements }, { data: openRecruitment }, { data: members }] =
+  const [{ data: achievements }, { data: openRecruitment }, { data: members }, { data: labPhotos }] =
     await Promise.all([
       supabase.from("achievements").select("*").order("year", { ascending: false }).limit(3),
       supabase.from("recruitment").select("*").eq("is_open", true).order("created_at", { ascending: false }).limit(1),
-      supabase.from("members").select("*").order("order_index", { ascending: true }).limit(6),
+      supabase.from("members").select("*").order("order_index", { ascending: true }),
+      supabase.from("lab_photos").select("*").order("order_index", { ascending: true }).limit(4),
     ]);
 
   const dosen = (members || []).filter((m) => m.category === "dosen");
@@ -61,7 +55,7 @@ export default async function HomePage() {
                   About Lab
                 </Link>
                 <Link
-                  href="/tim"
+                  href="/organigram"
                   className="border border-spis px-6 py-3 font-mono text-xs uppercase tracking-wider text-spis transition-colors hover:bg-spis hover:text-white"
                 >
                   About Us
@@ -141,18 +135,43 @@ export default async function HomePage() {
         {/* LAB ACTIVITIES — foto nyata, energi aktif */}
         <section className="border-t-4 border-line bg-paper py-20 md:py-24">
           <div className="container-lab">
-            <p className="eyebrow mb-3">Lab Activities</p>
-            <h2 className="max-w-xl font-display text-2xl font-bold text-ink md:text-3xl">
-              Riset, Kegiatan Lab, Fasilitas Lab, dan Kolaborasi
-            </h2>
-            <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
-              {LAB_PHOTOS.map((src, i) => (
-                <div key={src} className="aspect-square overflow-hidden rounded-lg border border-spis bg-spis-deep">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={src} alt={`Kegiatan lab SPIS ${i + 1}`} className="h-full w-full object-cover" />
-                </div>
-              ))}
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <p className="eyebrow mb-3">Lab Activities</p>
+                <h2 className="max-w-xl font-display text-2xl font-bold text-ink md:text-3xl">
+                  Kegiatan Lab dan Fasilitas Lab
+                </h2>
+              </div>
+              <Link href="/lab-activities" className="font-mono text-xs uppercase tracking-wider text-spis underline underline-offset-4">
+                View All →
+              </Link>
             </div>
+            {labPhotos && labPhotos.length > 0 ? (
+              <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
+                {labPhotos.map((photo) => (
+                  <div key={photo.id} className="overflow-hidden rounded-lg border border-spis bg-white">
+                    <div className="aspect-square w-full overflow-hidden">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={photo.photo_url} alt={photo.title || "Kegiatan lab SPIS"} className="h-full w-full object-cover" />
+                    </div>
+                    {(photo.title || photo.description) && (
+                      <div className="p-3">
+                        {photo.title && (
+                          <p className="truncate text-xs font-semibold text-ink">{photo.title}</p>
+                        )}
+                        {photo.description && (
+                          <p className="mt-0.5 truncate text-xs text-slate-light">{photo.description}</p>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="mt-10 text-sm text-slate">
+                Foto kegiatan dan fasilitas lab akan tampil di sini setelah ditambahkan lewat dashboard admin.
+              </p>
+            )}
           </div>
         </section>
 

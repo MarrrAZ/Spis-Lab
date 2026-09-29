@@ -35,12 +35,12 @@ export function SiteFooter() {
             <p className="eyebrow-light mb-3">Sosial</p>
             <ul className="space-y-2 text-sm text-white/60">
               <li>
-                <a href="https://instagram.com/" target="_blank" rel="noreferrer" className="hover:text-white">
+                <a href="https://www.instagram.com/spislaboratory/" target="_blank" rel="noreferrer" className="hover:text-white">
                   Instagram
                 </a>
               </li>
               <li>
-                <a href="https://linkedin.com/" target="_blank" rel="noreferrer" className="hover:text-white">
+                <a href="https://www.linkedin.com/in/spis-laboratory/" target="_blank" rel="noreferrer" className="hover:text-white">
                   LinkedIn
                 </a>
               </li>

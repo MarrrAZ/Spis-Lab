@@ -135,6 +135,67 @@ create policy "abdimas_authenticated_write"
   with check (true);
 
 -- ---------------------------------------------------------------------
+-- 4b. LAB_PHOTOS : foto "Kegiatan Lab" & "Fasilitas Lab" (beranda + /lab-activities)
+-- ---------------------------------------------------------------------
+create table if not exists public.lab_photos (
+  id uuid primary key default gen_random_uuid(),
+  category text not null check (category in ('kegiatan', 'fasilitas')),
+  title text,
+  description text,
+  photo_url text not null,
+  order_index int not null default 0,
+  created_at timestamptz not null default now()
+);
+
+create index if not exists lab_photos_category_idx on public.lab_photos (category);
+
+alter table public.lab_photos enable row level security;
+
+create policy "lab_photos_public_select"
+  on public.lab_photos for select
+  to anon, authenticated
+  using (true);
+
+create policy "lab_photos_authenticated_write"
+  on public.lab_photos for all
+  to authenticated
+  using (true)
+  with check (true);
+
+-- ---------------------------------------------------------------------
+-- 5b. ABOUT_CONTENT : isi halaman /tentang (singleton, id selalu 1)
+-- ---------------------------------------------------------------------
+create table if not exists public.about_content (
+  id int primary key default 1,
+  intro_1 text,
+  intro_2 text,
+  intro_3 text,
+  nilai_1_label text,
+  nilai_1_desc text,
+  nilai_2_label text,
+  nilai_2_desc text,
+  nilai_3_label text,
+  nilai_3_desc text,
+  naungan_title text,
+  naungan_text text,
+  updated_at timestamptz not null default now(),
+  constraint about_content_singleton check (id = 1)
+);
+
+alter table public.about_content enable row level security;
+
+create policy "about_content_public_select"
+  on public.about_content for select
+  to anon, authenticated
+  using (true);
+
+create policy "about_content_authenticated_write"
+  on public.about_content for all
+  to authenticated
+  using (true)
+  with check (true);
+
+-- ---------------------------------------------------------------------
 -- 5. RECRUITMENT : info rekrutmen asisten
 -- ---------------------------------------------------------------------
 create table if not exists public.recruitment (
