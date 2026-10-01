@@ -118,6 +118,7 @@ create table if not exists public.abdimas (
   activity_date date,
   description text,
   link text,
+  gallery jsonb not null default '[]'::jsonb,  -- [{type:'image'|'video', url}]
   created_at timestamptz not null default now()
 );
 
@@ -142,7 +143,9 @@ create table if not exists public.lab_photos (
   category text not null check (category in ('kegiatan', 'fasilitas')),
   title text,
   description text,
-  photo_url text not null,
+  media_type text not null default 'image' check (media_type in ('image', 'video')),
+  photo_url text,
+  video_url text,
   order_index int not null default 0,
   created_at timestamptz not null default now()
 );
@@ -233,7 +236,7 @@ create table if not exists public.projects (
   year int,
   status text,
   cover_image text,
-  gallery jsonb not null default '[]'::jsonb,
+  gallery jsonb not null default '[]'::jsonb,       -- [{type:'image'|'video', url}]
   short_description text,
   overview text,
   purpose text,
@@ -315,6 +318,38 @@ create policy "photos_authenticated_delete"
   on storage.objects for delete
   to authenticated
   using (bucket_id = 'photos');
+
+-- =====================================================================
+-- STORAGE : bucket untuk video dokumentasi (Abdimas, Lab Activities, Projects)
+-- =====================================================================
+insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+values (
+  'videos', 'videos', true, 104857600,
+  array['video/mp4', 'video/webm', 'video/quicktime']
+)
+on conflict (id) do update set
+  file_size_limit = excluded.file_size_limit,
+  allowed_mime_types = excluded.allowed_mime_types;
+
+create policy "videos_public_read"
+  on storage.objects for select
+  to anon, authenticated
+  using (bucket_id = 'videos');
+
+create policy "videos_authenticated_write"
+  on storage.objects for insert
+  to authenticated
+  with check (bucket_id = 'videos');
+
+create policy "videos_authenticated_update"
+  on storage.objects for update
+  to authenticated
+  using (bucket_id = 'videos');
+
+create policy "videos_authenticated_delete"
+  on storage.objects for delete
+  to authenticated
+  using (bucket_id = 'videos');
 
 -- =====================================================================
 -- Selesai. Setelah menjalankan file ini, buat akun asisten pertama

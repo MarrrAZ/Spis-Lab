@@ -196,12 +196,21 @@ export default async function ProjectDetailPage({ params }) {
             {gallery.length > 0 && (
               <Section title="Documentation">
                 <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
-                  {gallery.map((url, i) => (
-                    <div key={i} className="aspect-square overflow-hidden rounded-lg border border-spis bg-paper-2">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={url} alt={`${project.name} — dokumentasi ${i + 1}`} className="h-full w-full object-cover" />
-                    </div>
-                  ))}
+                  {gallery.map((item, i) =>
+                    item.type === "video" ? (
+                      <video
+                        key={i}
+                        src={item.url}
+                        controls
+                        className="aspect-square w-full rounded-lg border border-spis bg-black object-cover"
+                      />
+                    ) : (
+                      <div key={i} className="aspect-square overflow-hidden rounded-lg border border-spis bg-paper-2">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={item.url} alt={`${project.name} — dokumentasi ${i + 1}`} className="h-full w-full object-cover" />
+                      </div>
+                    )
+                  )}
                 </div>
               </Section>
             )}

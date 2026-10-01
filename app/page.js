@@ -28,6 +28,23 @@ export default async function HomePage() {
   const asisten = (members || []).filter((m) => m.category === "asisten");
   const teamPreview = [...dosen, ...asisten].slice(0, 4);
 
+  const achievementIds = (achievements ?? []).map((a) => a.id);
+  const { data: achievementLinks } = achievementIds.length
+    ? await supabase
+        .from("achievement_members")
+        .select("achievement_id, member_id")
+        .in("achievement_id", achievementIds)
+    : { data: [] };
+
+  const memberNameById = new Map((members ?? []).map((m) => [m.id, m.name]));
+  const achievementsWithAuthors = (achievements ?? []).map((a) => ({
+    ...a,
+    authorNames: (achievementLinks ?? [])
+      .filter((l) => l.achievement_id === a.id)
+      .map((l) => memberNameById.get(l.member_id))
+      .filter(Boolean),
+  }));
+
   return (
     <>
       <SiteHeader />
@@ -151,8 +168,12 @@ export default async function HomePage() {
                 {labPhotos.map((photo) => (
                   <div key={photo.id} className="overflow-hidden rounded-lg border border-spis bg-white">
                     <div className="aspect-square w-full overflow-hidden">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={photo.photo_url} alt={photo.title || "Kegiatan lab SPIS"} className="h-full w-full object-cover" />
+                      {photo.media_type === "video" ? (
+                        <video src={photo.video_url} controls className="h-full w-full bg-black object-cover" />
+                      ) : (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={photo.photo_url} alt={photo.title || "Kegiatan lab SPIS"} className="h-full w-full object-cover" />
+                      )}
                     </div>
                     {(photo.title || photo.description) && (
                       <div className="p-3">
@@ -270,8 +291,8 @@ export default async function HomePage() {
             </div>
 
             <div className="mt-10 grid gap-6 md:grid-cols-3">
-              {achievements && achievements.length > 0 ? (
-                achievements.map((item) => (
+              {achievementsWithAuthors.length > 0 ? (
+                achievementsWithAuthors.map((item) => (
                   <div key={item.id} className="rounded-lg border-2 border-spis bg-white p-6">
                     <span className="font-mono text-[11px] uppercase tracking-wider text-spis-bright">
                       {item.type === "publikasi" ? "Publikasi" : "Pendanaan Riset"}
@@ -281,6 +302,9 @@ export default async function HomePage() {
                       {item.title}
                     </h3>
                     {item.venue && <p className="mt-2 text-sm text-slate">{item.venue}</p>}
+                    {item.authorNames.length > 0 && (
+                      <p className="mt-2 text-xs text-slate-light">{item.authorNames.join(", ")}</p>
+                    )}
                   </div>
                 ))
               ) : (

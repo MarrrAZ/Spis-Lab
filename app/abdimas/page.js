@@ -63,6 +63,28 @@ export default async function AbdimasPage() {
                         {item.description}
                       </p>
                     )}
+                    {Array.isArray(item.gallery) && item.gallery.length > 0 && (
+                      <div className="mt-4 grid grid-cols-3 gap-2">
+                        {item.gallery.map((m, i) =>
+                          m.type === "video" ? (
+                            <video
+                              key={i}
+                              src={m.url}
+                              controls
+                              className="aspect-square w-full rounded border border-spis bg-black object-cover"
+                            />
+                          ) : (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img
+                              key={i}
+                              src={m.url}
+                              alt={`${item.title} — dokumentasi ${i + 1}`}
+                              className="aspect-square w-full rounded border border-spis object-cover"
+                            />
+                          )
+                        )}
+                      </div>
+                    )}
                     {item.link && (
                       <a
                         href={item.link}

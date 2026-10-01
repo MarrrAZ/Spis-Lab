@@ -9,8 +9,12 @@ function PhotoCard({ item }) {
   return (
     <div className="overflow-hidden rounded-lg border border-spis bg-white">
       <div className="aspect-square w-full overflow-hidden">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={item.photo_url} alt={item.title || ""} className="h-full w-full object-cover" />
+        {item.media_type === "video" ? (
+          <video src={item.video_url} controls className="h-full w-full bg-black object-cover" />
+        ) : (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={item.photo_url} alt={item.title || ""} className="h-full w-full object-cover" />
+        )}
       </div>
       {(item.title || item.description) && (
         <div className="p-4">
