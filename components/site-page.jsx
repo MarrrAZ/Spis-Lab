@@ -5,7 +5,7 @@ import { wrap, rootProps } from '@/lib/site/render';
 export default function SitePage({ html, intro = false }) {
   return (
     <>
-      <div {...rootProps()} style={{ minHeight: '100vh', background: 'var(--bg)', color: 'var(--body)', fontFamily: 'Inter, system-ui, sans-serif', overflowX: 'clip' }} dangerouslySetInnerHTML={{ __html: wrap(html) }} />
+      <div {...rootProps()} style={{ position: 'relative', isolation: 'isolate', width: '100%', minHeight: '100vh', background: 'var(--bg)', color: 'var(--ink, #E8EEFF)', fontFamily: 'Inter, system-ui, sans-serif', overflow: 'clip' }} dangerouslySetInnerHTML={{ __html: wrap(html) }} />
       <Runtime intro={intro} />
     </>
   );
